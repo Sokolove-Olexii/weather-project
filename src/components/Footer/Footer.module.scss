@@ -1,0 +1,55 @@
+.Footer {
+  background: rgba(255, 179, 108, 1);
+  padding: 40px 0px 69px 150px;
+  width: 100%;
+  box-sizing: border-box;
+  &_link {
+    cursor: pointer;
+  }
+
+  &_icons {
+    width: 40px;
+    height: 40px;
+  }
+
+  &_contentWrapper {
+    display: flex;
+    gap: 103px;
+  }
+
+  &_address {
+    margin-bottom: 10px;
+    color: rgba(0, 0, 0, 1);
+    // font-family: Montserrat Alternates;
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 20px;
+  }
+
+  &_addressDescription {
+    color: rgba(0, 0, 0, 1);
+    // font-family: Montserrat Alternates;
+    font-size: 12px;
+    font-weight: 500;
+    line-height: 15px;
+  }
+}
+
+.logoIcon {
+  width: 90px;
+  height: 62px;
+}
+
+.FooterContactUs {
+  margin-bottom: 10px;
+  color: rgba(0, 0, 0, 1);
+  //   font-family: Montserrat Alternates;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 20px;
+  &_list {
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+  }
+}

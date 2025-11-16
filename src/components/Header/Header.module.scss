@@ -1,0 +1,54 @@
+.Header {
+  display: flex;
+  background: rgba(255, 255, 255, 1);
+  align-items: center;
+  justify-content: space-between;
+}
+
+.HeaderList {
+  display: flex;
+  gap: 45px;
+  list-style: none;
+  &_li {
+    color: rgba(0, 0, 0, 1);
+    // font-family: Montserrat Alternates;
+    font-size: 12px;
+    font-weight: 500;
+    line-height: 15px;
+  }
+}
+
+.HeaderRlist {
+  display: flex;
+  gap: 30px;
+  align-items: center;
+  list-style: none;
+  &_btn {
+    width: 89px;
+    height: 35px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 20px 10px 20px;
+    border-radius: 10px;
+    border: none;
+    background: rgba(255, 179, 108, 1);
+    color: rgba(0, 0, 0, 1);
+    // font-family: Montserrat Alternates;
+    font-size: 12px;
+    font-weight: 500;
+    line-height: 15px;
+  }
+}
+
+.logoIcon {
+  width: 82px;
+  height: 56px;
+}
+
+.User {
+  width: 50px;
+  height: 50px;
+}
