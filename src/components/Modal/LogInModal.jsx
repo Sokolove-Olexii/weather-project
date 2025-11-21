@@ -8,7 +8,7 @@ import {
   TextField,
 } from "@mui/material";
 
-export default function SignInModal({ open, onClose }) {
+export default function LogInModal({ open, onClose, onSwitchToSignUp }) {
   const handleSubmit = (e) => {
     e.preventDefault();
     const email = e.target.email.value;
@@ -41,7 +41,7 @@ export default function SignInModal({ open, onClose }) {
           textAlign: "center",
         }}
       >
-        Sign up
+        Log In
       </DialogTitle>
 
       <DialogContent>
@@ -92,11 +92,11 @@ export default function SignInModal({ open, onClose }) {
                 marginBottom: "15px",
               }}
             >
-              E-Mail
+              Email
             </Typography>
             <TextField
               name="email"
-              placeholder="E-Mail"
+              placeholder="Email"
               fullWidth
               sx={{
                 color: "rgba(171, 171, 171, 1)",
@@ -144,6 +144,7 @@ export default function SignInModal({ open, onClose }) {
             type="submit"
             variant="contained"
             sx={{
+              marginBottom: "15px",
               width: "114px",
               height: "37px",
               padding: "10px 30px 10px 30px",
@@ -158,7 +159,7 @@ export default function SignInModal({ open, onClose }) {
               mt: 2,
             }}
           >
-            Sign Up
+            Log In
           </Button>
         </Box>
 
@@ -171,14 +172,15 @@ export default function SignInModal({ open, onClose }) {
             lineHeight: "12px",
           }}
         >
-          Already have an account?{" "}
+          Don't have an account?{" "}
           <span
             style={{
               textDecoration: "underline",
               cursor: "pointer",
             }}
+            onClick={onSwitchToSignUp}
           >
-            Log In
+            Sign In
           </span>
         </Typography>
       </DialogContent>
