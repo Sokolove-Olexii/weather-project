@@ -1,0 +1,44 @@
+.Interact {
+  margin: 80px 0;
+  &_title {
+    margin-bottom: 40px;
+    color: rgba(0, 0, 0, 1);
+    // font-family: Montserrat;
+    font-size: 20px;
+    font-weight: 500;
+    line-height: 24px;
+  }
+  &_button {
+    width: 138px;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px;
+    background: rgba(255, 179, 108, 1);
+  }
+}
+
+.InteractList {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 40px;
+  margin-bottom: 20px;
+  &_li {
+    max-width: 270px;
+  }
+  &_img {
+    margin-bottom: 20px;
+    width: 270px;
+    height: 208px;
+    border-radius: 10px;
+  }
+  &_text {
+    color: rgba(0, 0, 0, 1);
+    // font-family: Montserrat;
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 20px;
+  }
+}

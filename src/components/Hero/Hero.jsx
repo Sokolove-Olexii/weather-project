@@ -1,8 +1,21 @@
 import { Container } from "../Container/Container";
+import { useState } from "react";
 import searchImg from "../../images/Svg/searchImg.svg";
 import styles from "./Hero.module.scss";
 
-export const Hero = () => {
+export const Hero = ({ onSearch, handleKey }) => {
+  const [query, setQuery] = useState("");
+
+  const handleSearch = () => {
+    if (query.trim()) {
+      onSearch(query.trim());
+      setQuery("");
+    }
+
+    const handleKey = (e) => {
+      if (e.key === "Enter") handleSearch();
+    };
+  };
   return (
     <section className={styles.Hero}>
       <Container>
@@ -30,8 +43,11 @@ export const Hero = () => {
               type="text"
               placeholder="Search location..."
               className={styles.HeroSearch_input}
+              value={query}
+              onChange={(e) => setQuery(e.target.value)}
+              onKeyDown={handleKey}
             />
-            <button className={styles.HeroSearch_button}>
+            <button className={styles.HeroSearch_button} onClick={handleSearch}>
               <img
                 src={searchImg}
                 alt="SearchImg"

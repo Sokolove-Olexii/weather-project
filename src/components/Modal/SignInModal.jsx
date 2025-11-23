@@ -8,13 +8,20 @@ import {
   TextField,
 } from "@mui/material";
 
-export default function SignInModal({ open, onClose, onSwitchToLogin }) {
+export default function SignInModal({
+  open,
+  onClose,
+  onSwitchToLogin,
+  onLoginSuccess,
+}) {
   const handleSubmit = (e) => {
     e.preventDefault();
+    const username = e.target.username.value;
     const email = e.target.email.value;
     const password = e.target.password.value;
     console.log("Email:", email);
     console.log("Password:", password);
+    onLoginSuccess({ username, email });
     onClose();
   };
 
@@ -70,6 +77,7 @@ export default function SignInModal({ open, onClose, onSwitchToLogin }) {
               name="username"
               placeholder="Username"
               fullWidth
+              required
               sx={{
                 color: "rgba(171, 171, 171, 1)",
                 fontFamily: "Montserrat",
@@ -92,12 +100,13 @@ export default function SignInModal({ open, onClose, onSwitchToLogin }) {
                 marginBottom: "15px",
               }}
             >
-              E-Mail
+              Email
             </Typography>
             <TextField
               name="email"
               placeholder="E-Mail"
               fullWidth
+              required
               sx={{
                 color: "rgba(171, 171, 171, 1)",
                 fontFamily: "Montserrat",
@@ -127,6 +136,7 @@ export default function SignInModal({ open, onClose, onSwitchToLogin }) {
               placeholder="Password"
               type="password"
               fullWidth
+              required
               sx={{
                 color: "rgba(171, 171, 171, 1)",
                 fontFamily: "Montserrat",
