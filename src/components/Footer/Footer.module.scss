@@ -1,8 +1,12 @@
 .Footer {
+  margin-top: auto;
   background: rgba(255, 179, 108, 1);
-  padding: 40px 0px 69px 150px;
+  padding: 40px 0px 64px 150px;
   width: 100%;
-  box-sizing: border-box;
+  @media screen and (max-width: 768px) {
+    // padding: 35px 124px 35px 100px;
+    padding: 45px 30px;
+  }
   &_link {
     cursor: pointer;
   }
@@ -15,6 +19,11 @@
   &_contentWrapper {
     display: flex;
     gap: 103px;
+    @media screen and (max-width: 768px) {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
   }
 
   &_address {
@@ -24,6 +33,14 @@
     font-size: 16px;
     font-weight: 500;
     line-height: 20px;
+    @media screen and (max-width: 480px) {
+      font-size: 12px;
+      line-height: 15px;
+    }
+    @media screen and (max-width: 768px) {
+      font-size: 14px;
+      line-height: 17px;
+    }
   }
 
   &_addressDescription {
@@ -32,21 +49,60 @@
     font-size: 12px;
     font-weight: 500;
     line-height: 15px;
+    @media screen and (max-width: 480px) {
+      font-size: 8px;
+      line-height: 10px;
+    }
+    @media screen and (max-width: 768px) {
+      font-size: 10px;
+      line-height: 12px;
+    }
+  }
+
+  &_mobileWrapper {
+    display: flex;
+    justify-content: row;
+    gap: 103px;
+    // @media screen and (max-width: 768px) {
+    //   display: flex;
+    //   gap: 75px;
+    // }
   }
 }
 
 .logoIcon {
   width: 90px;
   height: 62px;
+  @media screen and (max-width: 320px) {
+    width: 70px;
+    height: 52px;
+  }
 }
 
 .FooterContactUs {
-  margin-bottom: 10px;
-  color: rgba(0, 0, 0, 1);
-  //   font-family: Montserrat Alternates;
-  font-size: 16px;
-  font-weight: 500;
-  line-height: 20px;
+  @media screen and (max-width: 768px) {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    align-items: center;
+    // margin-left: auto;
+  }
+  &_text {
+    margin-bottom: 10px;
+    color: rgba(0, 0, 0, 1);
+    //   font-family: Montserrat Alternates;
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 20px;
+    @media screen and (max-width: 480px) {
+      font-size: 12px;
+      line-height: 15px;
+    }
+    @media screen and (max-width: 768px) {
+      font-size: 14px;
+      line-height: 17px;
+    }
+  }
   &_list {
     display: flex;
     flex-direction: row;

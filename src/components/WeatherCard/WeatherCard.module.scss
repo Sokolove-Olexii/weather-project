@@ -1,0 +1,116 @@
+.weatherCard {
+  padding: 15px 20px 21px;
+  max-width: 320px;
+  max-height: 430px;
+  border-radius: 20px;
+  background: rgba(232, 232, 232, 1);
+
+  &_time {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 10px;
+    color: rgba(0, 0, 0, 1);
+    // font-family: Montserrat;
+    font-size: 24px;
+    font-weight: 500;
+    line-height: 29px;
+  }
+  &_forecast {
+    display: flex;
+    justify-content: center;
+    margin: 0 auto;
+    margin-bottom: 15px;
+    width: 114px;
+    height: 28px;
+    padding: 8px 18px 8px 18px;
+    border-radius: 10px;
+    background: rgba(255, 179, 108, 1);
+    color: rgba(0, 0, 0, 1);
+    // font-family: Montserrat;
+    font-size: 10px;
+    font-weight: 500;
+    line-height: 12px;
+  }
+  &_temp {
+    display: flex;
+    justify-content: center;
+    color: rgba(0, 0, 0, 1);
+    // font-family: Montserrat;
+    font-size: 32px;
+    font-weight: 500;
+    line-height: 39px;
+  }
+}
+
+.upperDiv {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-bottom: 15px;
+  &_text {
+    color: rgba(0, 0, 0, 1);
+    // font-family: Montserrat;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 17px;
+  }
+}
+
+.dateDiv {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  margin-bottom: 22px;
+  gap: 13px;
+  &_date {
+    color: rgba(0, 0, 0, 1);
+    // font-family: Montserrat;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 17px;
+  }
+  &_line {
+    width: 1px;
+    height: 17px;
+    border: 1px solid rgba(0, 0, 0, 1);
+  }
+}
+
+.weatherBtnDiv {
+  display: flex;
+  align-items: center;
+  &_refresh {
+    cursor: pointer;
+    width: 30px;
+    height: 30px;
+    margin-right: 16px;
+  }
+  &_like {
+    cursor: pointer;
+    width: 30px;
+    height: 30px;
+    margin-right: 38px;
+  }
+  &_delete {
+    cursor: pointer;
+    width: 30px;
+    height: 30px;
+    margin-left: 37px;
+  }
+  &_seeMore {
+    border-radius: 10px;
+    background: rgba(255, 179, 108, 1);
+    width: 99px;
+    height: 28px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 8px 25px;
+    color: rgba(0, 0, 0, 1);
+    // font-family: Montserrat;
+    font-size: 10px;
+    font-weight: 500;
+    line-height: 12px;
+  }
+}

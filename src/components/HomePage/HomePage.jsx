@@ -75,7 +75,7 @@ export const HomePage = () => {
               data={city}
               onRefresh={() => refreshCity(city.name)}
               onDelete={() => deleteCity(city.name)}
-              onOpen={() => console.log("Открыть детали:", city.name)}
+              onOpen={() => console.log(city.name)}
             />
           ))}
         </section>
