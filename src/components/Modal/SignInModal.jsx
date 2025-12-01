@@ -7,6 +7,7 @@ import {
   Typography,
   TextField,
 } from "@mui/material";
+import { useState } from "react";
 
 export default function SignInModal({
   open,
@@ -14,15 +15,29 @@ export default function SignInModal({
   onSwitchToLogin,
   onLoginSuccess,
 }) {
+  const [email, setEmail] = useState("");
+  const [emailError, setEmailError] = useState("");
+
   const handleSubmit = (e) => {
     e.preventDefault();
     const username = e.target.username.value;
     const email = e.target.email.value;
     const password = e.target.password.value;
+    if (!email.endsWith("@gmail.com")) {
+      setEmailError("Email must end with @gmail.com");
+      return;
+    }
+    setEmailError("");
+
     console.log("Email:", email);
     console.log("Password:", password);
     onLoginSuccess({ username, email });
     onClose();
+  };
+
+  const handleChange = (e) => {
+    const value = e.target.value.replace("@gmail.com", "");
+    setEmail(value);
   };
 
   return (
@@ -107,6 +122,13 @@ export default function SignInModal({
               placeholder="E-Mail"
               fullWidth
               required
+              error={Boolean(emailError)}
+              helperText={emailError}
+              onChange={(e) => {
+                setEmail(e.target.value);
+                setEmailError("");
+              }}
+              value={email}
               sx={{
                 color: "rgba(171, 171, 171, 1)",
                 fontFamily: "Montserrat",

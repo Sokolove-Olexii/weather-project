@@ -3,12 +3,17 @@ import refreshImg from "../../images/Svg/refreshImg.svg";
 import likeImg from "../../images/Svg/heartImg.svg";
 import deleteImg from "../../images/Svg/deleteImg.svg";
 
-export const WeatherCard = ({ data, onRefresh, onDelete, onOpen }) => {
+export const WeatherCard = ({
+  data,
+  onRefresh,
+  onDelete,
+  onOpen,
+  onOpenSeeMore,
+}) => {
   const date = new Date((data.dt + data.timezone) * 1000);
 
   const formattedDate = date.toLocaleDateString("en-GB");
   const dayName = date.toLocaleDateString("en-US", { weekday: "long" });
-
   const timeString = date.toLocaleTimeString("en-GB", {
     hour: "2-digit",
     minute: "2-digit",
@@ -67,7 +72,15 @@ export const WeatherCard = ({ data, onRefresh, onDelete, onOpen }) => {
           }}
         />
         <img src={likeImg} alt="#" className={styles.weatherBtnDiv_like} />
-        <button className={styles.weatherBtnDiv_seeMore}>See more</button>
+        <button
+          className={styles.weatherBtnDiv_seeMore}
+          onClick={(e) => {
+            e.stopPropagation();
+            onOpenSeeMore((prev) => !prev);
+          }}
+        >
+          See more
+        </button>
         <img
           src={deleteImg}
           alt="#"

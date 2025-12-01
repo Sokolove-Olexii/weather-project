@@ -61,7 +61,8 @@
   &_input {
     width: 100%;
     height: 42px;
-    color: rgba(135, 135, 135, 1);
+    // color: rgba(135, 135, 135, 1);
+    color: rgba(0, 0, 0, 1);
     font-size: 14px;
     font-weight: 500;
     border-radius: 10px;
@@ -69,8 +70,11 @@
     border: none;
     box-sizing: border-box;
     padding: 0 50px 0 20px;
+    transition: box-shadow 0.35s;
+    &:focus {
+      box-shadow: 0 0 0.3em 0.3em rgba(135, 135, 135, 1);
+    }
   }
-
   &_button {
     position: absolute;
     right: 0;

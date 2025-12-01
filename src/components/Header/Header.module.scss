@@ -1,6 +1,7 @@
 .Header {
   display: flex;
-  background: rgba(255, 255, 255, 1);
+  position: relative;
+  background-color: rgba(255, 255, 255, 1);
   align-items: center;
   justify-content: space-between;
 }
@@ -9,12 +10,22 @@
   display: flex;
   gap: 45px;
   list-style: none;
+  @media screen and (max-width: 768px) {
+    display: none;
+  }
   &_li {
+    cursor: pointer;
     color: rgba(0, 0, 0, 1);
-    // font-family: Montserrat Alternates;
+    font-family: "Montserrat Alternates", sans-serif;
     font-size: 12px;
     font-weight: 500;
     line-height: 15px;
+    transition: 0.3s;
+  }
+  &_li:hover {
+    text-shadow: 0 0 6px rgba(255, 143, 63, 0.5);
+    transform: scale(1.05);
+    // filter: blur(0.3px);
   }
 }
 
@@ -23,6 +34,9 @@
   gap: 30px;
   align-items: center;
   list-style: none;
+  @media screen and (max-width: 768px) {
+    display: none;
+  }
   &_btn {
     width: 89px;
     height: 35px;
@@ -36,19 +50,129 @@
     border: none;
     background: rgba(255, 179, 108, 1);
     color: rgba(0, 0, 0, 1);
-    // font-family: Montserrat Alternates;
+    font-family: "Montserrat Alternates", sans-serif;
     font-size: 12px;
     font-weight: 500;
     line-height: 15px;
+    transition: transform 0.3s, box-shadow 0.3s;
+    &:hover {
+      transform: translateY(-0.15em);
+      box-shadow: 0 0 0.3em 0em;
+    }
+  }
+  &_container {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    cursor: pointer;
+  }
+  &_logOut {
+    position: absolute;
+    background-color: rgba(255, 255, 255, 1);
+    top: 95%;
+  }
+  &_logOutBtn {
+    width: 89px;
+    height: 35px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 10px 20px 10px 20px;
+    border-radius: 10px;
+    border: none;
+    font-family: "Montserrat Alternates", sans-serif;
+    font-size: 12px;
+    font-weight: 500;
+    line-height: 15px;
+    background: rgba(255, 179, 108, 1);
+    color: rgba(0, 0, 0, 1);
+  }
+  &_username {
+    color: rgba(0, 0, 0, 1);
+    font-family: "Montserrat Alternates", sans-serif;
+    font-size: 12px;
+    font-weight: 500;
+    line-height: 15px;
+  }
+  &_icon {
+    width: 10px;
+    height: 10px;
+  }
+  &_profile {
+    cursor: pointer;
   }
 }
 
 .logoIcon {
   width: 82px;
   height: 56px;
+  user-select: none;
 }
 
 .User {
   width: 50px;
   height: 50px;
+}
+
+.HeaderMobileMenu {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  user-select: none;
+  @media screen and (min-width: 768px) {
+    display: none;
+  }
+  &_position {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    cursor: pointer;
+  }
+  &_text {
+    color: rgba(0, 0, 0, 1);
+    font-family: "Montserrat Alternates", sans-serif;
+    font-size: 10px;
+    font-weight: 500;
+    line-height: 12px;
+  }
+  &_icon {
+    width: 6px;
+    height: 6px;
+  }
+}
+
+.HeaderMenu {
+  display: flex;
+  justify-content: space-between;
+  border-radius: 0 0 10px 10px;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 100%;
+  padding: 30px 50px;
+  background: rgba(230, 230, 230, 1);
+  opacity: 0;
+  transform: translateY(-10px);
+  pointer-events: none;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+
+  &.active {
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: auto;
+  }
+  &_list {
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+  }
+}
+
+.HeaderMenuRightDiv {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  gap: 15px;
 }
