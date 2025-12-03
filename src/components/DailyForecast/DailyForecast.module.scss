@@ -1,0 +1,61 @@
+.DailyForecast {
+  padding: 26px 78px 42px;
+  border-radius: 20px;
+  background: rgba(232, 232, 232, 1);
+  &_title {
+    margin-bottom: 20px;
+    color: rgba(0, 0, 0, 1);
+    font-family: "Montserrat", sans-serif;
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 20px;
+  }
+}
+
+.DailyForecastList {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  &_li {
+    padding: 0 50px;
+    align-items: center;
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    justify-content: row;
+    border-radius: 10px;
+    background: rgba(217, 217, 217, 1);
+  }
+  &_date {
+    text-align: left;
+    color: rgba(0, 0, 0, 1);
+    font-family: "Montserrat", sans-serif;
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 20px;
+  }
+  &_icon {
+    width: 40px;
+    height: 40px;
+  }
+  &_description {
+    text-align: right;
+    color: rgba(0, 0, 0, 1);
+    font-family: "Montserrat", sans-serif;
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 20px;
+  }
+}
+
+.DailyForecastListTemperature {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  &_text {
+    color: rgba(0, 0, 0, 1);
+    font-family: "Montserrat", sans-serif;
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 20px;
+  }
+}

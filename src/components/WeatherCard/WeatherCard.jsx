@@ -2,6 +2,7 @@ import styles from "./WeatherCard.module.scss";
 import refreshImg from "../../images/Svg/refreshImg.svg";
 import likeImg from "../../images/Svg/heartImg.svg";
 import deleteImg from "../../images/Svg/deleteImg.svg";
+import { useState } from "react";
 
 export const WeatherCard = ({
   data,
@@ -10,6 +11,8 @@ export const WeatherCard = ({
   onOpen,
   onOpenSeeMore,
 }) => {
+  const [spin, setSpin] = useState(false);
+  const [heartAnim, setHeartAnim] = useState(false);
   const date = new Date((data.dt + data.timezone) * 1000);
 
   const formattedDate = date.toLocaleDateString("en-GB");
@@ -18,20 +21,6 @@ export const WeatherCard = ({
     hour: "2-digit",
     minute: "2-digit",
   });
-
-  // const getIcon = (description) => {
-  //   description = description.toLowerCase();
-
-  //   if (description.includes("clear")) return "/icons/sun.png";
-  //   if (description.includes("cloud")) return "/icons/cloud.png";
-  //   if (description.includes("rain")) return "/icons/rain.png";
-  //   if (description.includes("snow")) return "/icons/snow.png";
-  //   if (description.includes("storm")) return "/icons/storm.png";
-  //   if (description.includes("mist") || description.includes("fog"))
-  //     return "/icons/fog.png";
-
-  //   return "/icons/default.png";
-  // };
 
   return (
     <div className={styles.weatherCard} onClick={onOpen}>
@@ -59,24 +48,44 @@ export const WeatherCard = ({
         {Math.round(data.main.temp)}°C
       </div>
 
-      <p className={styles.description}>{data.weather[0].description}</p>
+      {/* <p className={styles.description}>{data.weather[0].description}</p> */}
+      <img
+        className={styles.weatherCard_icon}
+        src={`http://openweathermap.org/img/wn/${data.weather[0].icon}@4x.png`}
+        alt={data.weather[0].description}
+      />
 
       <div className={styles.weatherBtnDiv}>
         <img
           src={refreshImg}
           alt="#"
-          className={styles.weatherBtnDiv_refresh}
+          className={`${styles.weatherBtnDiv_refresh} ${
+            spin ? styles.spin : ""
+          }`}
           onClick={(e) => {
             e.preventDefault();
+            setSpin(true);
             onRefresh(data.name);
+            setTimeout(() => setSpin(false), 600);
           }}
         />
-        <img src={likeImg} alt="#" className={styles.weatherBtnDiv_like} />
+        <img
+          src={likeImg}
+          alt="#"
+          className={`${styles.weatherBtnDiv_like} ${
+            heartAnim ? styles.heartPop : ""
+          }`}
+          onClick={(e) => {
+            e.preventDefault();
+            setHeartAnim(true);
+            setTimeout(() => setHeartAnim(false), 400);
+          }}
+        />
         <button
           className={styles.weatherBtnDiv_seeMore}
           onClick={(e) => {
             e.stopPropagation();
-            onOpenSeeMore((prev) => !prev);
+            onOpenSeeMore(data);
           }}
         >
           See more
