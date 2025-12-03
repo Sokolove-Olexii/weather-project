@@ -1,9 +1,14 @@
 {
   "files": {
-    "main.css": "/weather-project/static/css/main.0e8bad59.css",
-    "main.js": "/weather-project/static/js/main.f99db85d.js",
+    "main.css": "/weather-project/static/css/main.bcf0a6ae.css",
+    "main.js": "/weather-project/static/js/main.ad768a4b.js",
     "static/media/Hero-background.png": "/weather-project/static/media/Hero-background.f1e7d16d78a7a0db971d.png",
+    "static/media/pressure.svg": "/weather-project/static/media/pressure.ef82f386267e44ec461f5c6d7fd49d27.svg",
     "static/media/heartImg.svg": "/weather-project/static/media/heartImg.eed36ed96521eb5f3762fdd3f315fe5c.svg",
+    "static/media/visibility.svg": "/weather-project/static/media/visibility.2eaba1750dc699e45d636a53516fe7cb.svg",
+    "static/media/temperature.svg": "/weather-project/static/media/temperature.f40b3d7d21d1caed332396bf8fd4d85e.svg",
+    "static/media/humidity.svg": "/weather-project/static/media/humidity.45b4df394c65bfcbf2e5a4ca14fa4713.svg",
+    "static/media/windSpeed.svg": "/weather-project/static/media/windSpeed.391ac37396ff4f2f1e30b769a09e8bc8.svg",
     "static/media/User.svg": "/weather-project/static/media/User.9ae21baa5699bca7190dfd46ad59ebe8.svg",
     "static/media/searchImg.svg": "/weather-project/static/media/searchImg.d6b2210006084e689485933e55ccbb7f.svg",
     "static/media/refreshImg.svg": "/weather-project/static/media/refreshImg.84dae03ee125d7861419a31ad29262e8.svg",
@@ -12,11 +17,12 @@
     "static/media/Second-Interact-Img.jpg": "/weather-project/static/media/Second-Interact-Img.3646fda4e3ac3e2dca57.jpg",
     "static/media/deleteImg.svg": "/weather-project/static/media/deleteImg.a577fde44b7cbc6ed3aae82e526a4ae8.svg",
     "index.html": "/weather-project/index.html",
-    "main.0e8bad59.css.map": "/weather-project/static/css/main.0e8bad59.css.map",
-    "main.f99db85d.js.map": "/weather-project/static/js/main.f99db85d.js.map"
+    "static/media/menuImg.svg": "/weather-project/static/media/menuImg.e3ae4c043b1317b8805f6f7e03e5a527.svg",
+    "main.bcf0a6ae.css.map": "/weather-project/static/css/main.bcf0a6ae.css.map",
+    "main.ad768a4b.js.map": "/weather-project/static/js/main.ad768a4b.js.map"
   },
   "entrypoints": [
-    "static/css/main.0e8bad59.css",
-    "static/js/main.f99db85d.js"
+    "static/css/main.bcf0a6ae.css",
+    "static/js/main.ad768a4b.js"
   ]
 }
