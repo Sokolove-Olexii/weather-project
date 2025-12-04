@@ -1,11 +1,12 @@
 import { useState, useEffect } from "react";
 import { Header } from "../Header/Header.jsx";
-import { Footer } from "../Footer/Footer.jsx";
 import { Hero } from "../Hero/Hero.jsx";
-import { Interact } from "../Interact/Interact.jsx";
 import { WeatherCard } from "../WeatherCard/WeatherCard.jsx";
 import { SeeMore } from "../SeeMore/SeeMore.jsx";
 import { DailyForecast } from "../DailyForecast/DailyForecast.jsx";
+import { Interact } from "../Interact/Interact.jsx";
+import { CoverflowSlider } from "../Slider/Slider.jsx";
+import { Footer } from "../Footer/Footer.jsx";
 
 const API_KEY = "352776a7cec67a372aa5f5597af2eab5";
 
@@ -136,8 +137,8 @@ export const HomePage = () => {
   // };
 
   const handleCloseSeeMore = () => {
-    setSeeMoreData(null);
-    setDailyForecastData(null);
+    setSeeMoreData(false);
+    setDailyForecastData(false);
   };
 
   return (
@@ -179,6 +180,7 @@ export const HomePage = () => {
           </>
         )}
         <Interact />
+        <CoverflowSlider />
       </main>
       <Footer />
     </>

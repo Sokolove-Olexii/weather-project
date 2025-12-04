@@ -1,0 +1,30 @@
+.swiper {
+  width: 100%;
+  padding: 30px 30px;
+  margin-bottom: 48px;
+}
+
+.SwiperSlide {
+  background-position: center;
+  background-size: cover;
+  width: 384px;
+  height: 211px;
+  opacity: 0.2;
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+.SwiperSlide img {
+  display: block;
+  width: 100%;
+  border-radius: 8px;
+}
+
+.SwiperSlide:global(.swiper-slide-active) {
+  opacity: 1;
+  z-index: 10;
+}
+
+.SwiperSlide:global(.swiper-slide-prev),
+.SwiperSlide:global(.swiper-slide-next) {
+  opacity: 0.6;
+}

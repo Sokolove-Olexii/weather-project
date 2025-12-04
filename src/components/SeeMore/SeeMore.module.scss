@@ -29,6 +29,11 @@
     padding: 20px 0;
     border-radius: 10px;
     background: rgba(217, 217, 217, 1);
+    transition: transform 0.3s, box-shadow 0.3s;
+    &:hover {
+      transform: translateY(-0.15em);
+      box-shadow: 0 0 0.2em 0em;
+    }
     @media screen and (max-width: 768px) {
       padding: 20px 0;
     }

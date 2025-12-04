@@ -23,6 +23,7 @@
     "react-toastify": "^11.0.5",
     "sass": "^1.94.0",
     "styled-components": "^6.1.19",
+    "swiper": "^12.0.3",
     "ui": "^0.2.4",
     "web-vitals": "^2.1.4"
   },

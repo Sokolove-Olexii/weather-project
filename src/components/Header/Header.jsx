@@ -1,11 +1,11 @@
-import styles from "./Header.module.scss";
+import { useState, useEffect } from "react";
 import { Container } from "../Container/Container";
+import styles from "./Header.module.scss";
 import logo from "../../images/Svg/Logo.svg";
 import user from "../../images/Svg/User.svg";
 import menuImg from "../../images/Svg/menuImg.svg";
 import SignUpModal from "../Modal/SignInModal";
 import LoginModal from "../Modal/LogInModal";
-import { useState, useEffect } from "react";
 
 export const Header = () => {
   const [openSignUp, setOpenSignUp] = useState(false);

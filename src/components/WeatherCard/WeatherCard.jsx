@@ -1,8 +1,8 @@
+import { useState } from "react";
 import styles from "./WeatherCard.module.scss";
 import refreshImg from "../../images/Svg/refreshImg.svg";
 import likeImg from "../../images/Svg/heartImg.svg";
 import deleteImg from "../../images/Svg/deleteImg.svg";
-import { useState } from "react";
 
 export const WeatherCard = ({
   data,
@@ -37,23 +37,19 @@ export const WeatherCard = ({
         <div className={styles.dateDiv_line}></div>
         <p className={styles.dateDiv_date}>{dayName}</p>
       </div>
-      {/* 
-      <img
-        className={styles.icon}
-        src={getIcon(data.weather[0].description)}
-        alt="weather icon"
-      /> */}
+      <div>
+        <img
+          className={styles.weatherCard_icon}
+          src={`http://openweathermap.org/img/wn/${data.weather[0].icon}@4x.png`}
+          alt={data.weather[0].description}
+        />
 
-      <div className={styles.weatherCard_temp}>
-        {Math.round(data.main.temp)}°C
+        <p className={styles.weatherCard_temp}>
+          {Math.round(data.main.temp)}°C
+        </p>
       </div>
 
       {/* <p className={styles.description}>{data.weather[0].description}</p> */}
-      <img
-        className={styles.weatherCard_icon}
-        src={`http://openweathermap.org/img/wn/${data.weather[0].icon}@4x.png`}
-        alt={data.weather[0].description}
-      />
 
       <div className={styles.weatherBtnDiv}>
         <img
