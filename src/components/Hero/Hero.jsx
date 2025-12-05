@@ -18,14 +18,22 @@ export const Hero = ({ onSearch, handleKey }) => {
   };
   return (
     <section className={styles.Hero}>
+      <div className={styles.Hero_clouds}>
+        <div className={styles.Hero_cloud}></div>
+        <div className={styles.Hero_cloud}></div>
+        <div className={styles.Hero_cloud}></div>
+      </div>
       <Container>
         <div className={styles.Hero_contentWrapper}>
-          <h1 className={styles.Hero_title}>Weather dashboard</h1>
+          {/* <div className={styles.HeroTitlePosition}> */}
+          <h1 className={styles.HeroTitlePosition_title}>Weather dashboard</h1>
+          {/* </div> */}
           <div>
             <ul className={styles.HeroList}>
               <li className={styles.HeroList_li}>
-                Create your personal list of favorite cities and always be aware
-                of the weather.
+                Create your personal list of <br></br>
+                favorite cities and always be <br></br>
+                aware of the weather.
               </li>
               <li>
                 <div className={styles.HeroList_line}></div>
