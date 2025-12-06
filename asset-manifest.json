@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/weather-project/static/css/main.ca940231.css",
-    "main.js": "/weather-project/static/js/main.2196aa42.js",
+    "main.css": "/weather-project/static/css/main.066b3162.css",
+    "main.js": "/weather-project/static/js/main.ea50a8ad.js",
     "static/media/pressure.svg": "/weather-project/static/media/pressure.ef82f386267e44ec461f5c6d7fd49d27.svg",
     "static/media/heartImg.svg": "/weather-project/static/media/heartImg.eed36ed96521eb5f3762fdd3f315fe5c.svg",
     "static/media/visibility.svg": "/weather-project/static/media/visibility.2eaba1750dc699e45d636a53516fe7cb.svg",
@@ -18,11 +18,11 @@
     "static/media/deleteImg.svg": "/weather-project/static/media/deleteImg.a577fde44b7cbc6ed3aae82e526a4ae8.svg",
     "index.html": "/weather-project/index.html",
     "static/media/menuImg.svg": "/weather-project/static/media/menuImg.e3ae4c043b1317b8805f6f7e03e5a527.svg",
-    "main.ca940231.css.map": "/weather-project/static/css/main.ca940231.css.map",
-    "main.2196aa42.js.map": "/weather-project/static/js/main.2196aa42.js.map"
+    "main.066b3162.css.map": "/weather-project/static/css/main.066b3162.css.map",
+    "main.ea50a8ad.js.map": "/weather-project/static/js/main.ea50a8ad.js.map"
   },
   "entrypoints": [
-    "static/css/main.ca940231.css",
-    "static/js/main.2196aa42.js"
+    "static/css/main.066b3162.css",
+    "static/js/main.ea50a8ad.js"
   ]
 }
