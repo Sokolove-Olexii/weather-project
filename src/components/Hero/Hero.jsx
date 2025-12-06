@@ -3,7 +3,7 @@ import { useState } from "react";
 import searchImg from "../../images/Svg/searchImg.svg";
 import styles from "./Hero.module.scss";
 
-export const Hero = ({ onSearch, handleKey }) => {
+export const Hero = ({ onSearch }) => {
   const [query, setQuery] = useState("");
 
   const handleSearch = () => {
@@ -11,10 +11,9 @@ export const Hero = ({ onSearch, handleKey }) => {
       onSearch(query.trim());
       setQuery("");
     }
-
-    const handleKey = (e) => {
-      if (e.key === "Enter") handleSearch();
-    };
+  };
+  const handleKey = (e) => {
+    if (e.key === "Enter") handleSearch();
   };
   return (
     <section className={styles.Hero}>
@@ -22,12 +21,13 @@ export const Hero = ({ onSearch, handleKey }) => {
         <div className={styles.Hero_cloud}></div>
         <div className={styles.Hero_cloud}></div>
         <div className={styles.Hero_cloud}></div>
+        <div className={styles.Hero_cloud}></div>
+        <div className={styles.Hero_cloud}></div>
+        <div className={styles.Hero_cloud}></div>
       </div>
       <Container>
         <div className={styles.Hero_contentWrapper}>
-          {/* <div className={styles.HeroTitlePosition}> */}
           <h1 className={styles.HeroTitlePosition_title}>Weather dashboard</h1>
-          {/* </div> */}
           <div>
             <ul className={styles.HeroList}>
               <li className={styles.HeroList_li}>

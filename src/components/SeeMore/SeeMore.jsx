@@ -7,7 +7,7 @@ import windSpeed from "../../images/SeeMore/windSpeed.svg";
 import visibility from "../../images/SeeMore/visibility.svg";
 import { DailyForecast } from "../DailyForecast/DailyForecast";
 
-export const SeeMore = ({ data, onClose, forecast }) => {
+export const SeeMore = ({ data, onClose }) => {
   return (
     <div className={styles.overlay} onClick={onClose}>
       <Container>

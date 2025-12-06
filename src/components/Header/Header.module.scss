@@ -4,6 +4,7 @@
   background-color: rgba(255, 255, 255, 1);
   align-items: center;
   justify-content: space-between;
+  z-index: 100;
 }
 
 .HeaderList {
@@ -25,7 +26,6 @@
   &_li:hover {
     text-shadow: 0 0 6px rgba(255, 143, 63, 0.5);
     transform: scale(1.05);
-    // filter: blur(0.3px);
   }
 }
 
@@ -55,6 +55,8 @@
     font-weight: 500;
     line-height: 15px;
     transition: transform 0.2s, box-shadow 0.2s;
+    cursor: pointer;
+
     &:hover {
       transform: translateY(-0.15em);
       box-shadow: 0 0 0.3em 0em;
@@ -65,11 +67,16 @@
     align-items: center;
     gap: 4px;
     cursor: pointer;
+    position: relative;
   }
   &_logOut {
     position: absolute;
     background-color: rgba(255, 255, 255, 1);
-    top: 95%;
+    top: 100%;
+    right: 0;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    z-index: 101;
   }
   &_logOutBtn {
     width: 89px;
@@ -87,6 +94,12 @@
     line-height: 15px;
     background: rgba(255, 179, 108, 1);
     color: rgba(0, 0, 0, 1);
+    cursor: pointer;
+    transition: transform 0.2s;
+
+    &:hover {
+      transform: scale(1.05);
+    }
   }
   &_username {
     color: rgba(0, 0, 0, 1);
@@ -108,6 +121,7 @@
   width: 82px;
   height: 56px;
   user-select: none;
+  cursor: pointer;
 }
 
 .User {
@@ -116,26 +130,29 @@
 }
 
 .HeaderMobileMenu {
+  position: static;
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 5px;
   user-select: none;
+
   @media screen and (min-width: 768px) {
     display: none;
   }
+
   &_position {
     display: flex;
     align-items: center;
     gap: 4px;
     cursor: pointer;
-    // transition: 0.3s;
-    // &_li:hover {
-    //   // text-shadow: 0 0 6px rgba(255, 143, 63, 0.5);
-    //   transform: scale(1.05);
-    //   // filter: blur(0.3px);
-    // }
+    transition: 0.3s;
+
+    &:hover {
+      transform: scale(1.05);
+    }
   }
+
   &_text {
     color: rgba(0, 0, 0, 1);
     font-family: "Montserrat Alternates", sans-serif;
@@ -143,6 +160,7 @@
     font-weight: 500;
     line-height: 12px;
   }
+
   &_icon {
     width: 6px;
     height: 6px;
@@ -155,20 +173,24 @@
   border-radius: 0 0 10px 10px;
   position: absolute;
   top: 100%;
-  left: 0;
-  width: 100%;
+  left: 50%;
+  transform: translateX(-50%) translateY(-20px);
+  width: 100vw;
+  max-width: 100%;
   padding: 30px 50px;
   background: rgba(230, 230, 230, 1);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
   opacity: 0;
-  transform: translateY(-10px);
   pointer-events: none;
   transition: opacity 0.3s ease, transform 0.3s ease;
+  z-index: 99;
 
   &.active {
     opacity: 1;
-    transform: translateY(0);
+    transform: translateX(-50%) translateY(0);
     pointer-events: auto;
   }
+
   &_list {
     display: flex;
     flex-direction: column;
@@ -181,4 +203,5 @@
   align-items: center;
   flex-direction: column;
   gap: 15px;
+  position: relative;
 }

@@ -59,9 +59,18 @@ export const HomePage = () => {
     return await res.json();
   };
 
-  const getForecast = async (lat, lon) => {
+  const getTimeZone = async (city) => {
     const res = await fetch(
-      `https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}&daily=weathercode,temperature_2m_max,temperature_2m_min&timezone=auto`
+      `https://api.open-meteo.com/v1/geocoding?name=${city}`
+    );
+
+    const data = await res.json();
+    return data?.results?.[0]?.timezone || "UTC";
+  };
+
+  const getForecast = async (lat, lon, timezone) => {
+    const res = await fetch(
+      `https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}&daily=weathercode,temperature_2m_max,temperature_2m_min&timezone=${timezone}`
     );
 
     if (!res.ok) throw new Error("Forecast not found");
@@ -69,7 +78,7 @@ export const HomePage = () => {
 
     // format for DailyForecast.jsx
     return data.daily.time.map((date, i) => ({
-      dt: new Date(date).getTime() / 1000,
+      dt: Date.parse(date + "T00:00:00Z") / 1000,
       temp: {
         day: data.daily.temperature_2m_max[i],
         night: data.daily.temperature_2m_min[i],
@@ -97,11 +106,20 @@ export const HomePage = () => {
   };
 
   const handleOpenSeeMore = async (city) => {
+    if (seeMoreData && seeMoreData.name === city.name) {
+      handleCloseSeeMore();
+      return;
+    }
     setSeeMoreData(city);
     setDailyForecastData(null);
 
     try {
-      const forecast = await getForecast(city.coord.lat, city.coord.lon);
+      const timezone = await getTimeZone(city.name);
+      const forecast = await getForecast(
+        city.coord.lat,
+        city.coord.lon,
+        timezone
+      );
       setDailyForecastData(forecast);
     } catch (error) {
       console.log("Error", error);
@@ -162,7 +180,7 @@ export const HomePage = () => {
               onRefresh={() => refreshCity(city.name)}
               onDelete={() => deleteCity(city.name)}
               onOpen={() => console.log(city.name)}
-              onOpenSeeMore={() => handleOpenSeeMore(city)}
+              onToggleSeeMore={() => handleOpenSeeMore(city)}
             />
           ))}
         </section>

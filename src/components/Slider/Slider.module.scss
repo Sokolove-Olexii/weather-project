@@ -11,6 +11,10 @@
   height: 211px;
   opacity: 0.2;
   transition: opacity 0.5s ease, transform 0.5s ease;
+  @media screen and (max-width: 480px) {
+    width: 234px;
+    height: 130px;
+  }
 }
 
 .SwiperSlide img {

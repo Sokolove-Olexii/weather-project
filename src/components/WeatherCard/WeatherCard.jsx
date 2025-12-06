@@ -9,18 +9,25 @@ export const WeatherCard = ({
   onRefresh,
   onDelete,
   onOpen,
-  onOpenSeeMore,
+  onToggleSeeMore,
 }) => {
   const [spin, setSpin] = useState(false);
   const [heartAnim, setHeartAnim] = useState(false);
-  const date = new Date((data.dt + data.timezone) * 1000);
+  const cityTimestamp = (data.dt + data.timezone) * 1000;
 
-  const formattedDate = date.toLocaleDateString("en-GB");
-  const dayName = date.toLocaleDateString("en-US", { weekday: "long" });
-  const timeString = date.toLocaleTimeString("en-GB", {
+  const formattedDate = new Intl.DateTimeFormat("en-GB", {
+    timeZone: "UTC",
+  }).format(cityTimestamp);
+  const dayName = new Intl.DateTimeFormat("en-US", {
+    weekday: "long",
+    timeZone: "UTC",
+  }).format(cityTimestamp);
+  const timeString = new Intl.DateTimeFormat("en-GB", {
     hour: "2-digit",
     minute: "2-digit",
-  });
+    hour12: false,
+    timeZone: "UTC",
+  }).format(cityTimestamp);
 
   return (
     <div className={styles.weatherCard} onClick={onOpen}>
@@ -49,17 +56,15 @@ export const WeatherCard = ({
         </p>
       </div>
 
-      {/* <p className={styles.description}>{data.weather[0].description}</p> */}
-
       <div className={styles.weatherBtnDiv}>
         <img
           src={refreshImg}
-          alt="#"
+          alt="Refresh"
           className={`${styles.weatherBtnDiv_refresh} ${
             spin ? styles.spin : ""
           }`}
           onClick={(e) => {
-            e.preventDefault();
+            e.stopPropagation();
             setSpin(true);
             onRefresh(data.name);
             setTimeout(() => setSpin(false), 600);
@@ -67,12 +72,12 @@ export const WeatherCard = ({
         />
         <img
           src={likeImg}
-          alt="#"
+          alt="Like"
           className={`${styles.weatherBtnDiv_like} ${
             heartAnim ? styles.heartPop : ""
           }`}
           onClick={(e) => {
-            e.preventDefault();
+            e.stopPropagation();
             setHeartAnim(true);
             setTimeout(() => setHeartAnim(false), 400);
           }}
@@ -81,18 +86,19 @@ export const WeatherCard = ({
           className={styles.weatherBtnDiv_seeMore}
           onClick={(e) => {
             e.stopPropagation();
-            onOpenSeeMore(data);
+            onToggleSeeMore();
           }}
         >
           See more
         </button>
         <img
           src={deleteImg}
-          alt="#"
+          alt="Delete"
           className={styles.weatherBtnDiv_delete}
           onClick={(e) => {
-            e.preventDefault();
+            e.stopPropagation();
             onDelete(data.name);
+            onToggleSeeMore();
           }}
         />
       </div>

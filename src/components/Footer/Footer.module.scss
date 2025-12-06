@@ -1,6 +1,15 @@
 .Footer {
   margin-top: auto;
-  background: rgba(255, 179, 108, 1);
+  // background: rgba(255, 179, 108, 1);
+  background: linear-gradient(
+    180deg,
+    #ffb36c 0,
+    #d4773d 50%,
+    #a05a2c 100%,
+    // #6b3e1e 60%,
+    // #3d2415 80%,
+    // #1a1410 100%
+  );
   padding: 40px 0;
   width: 100%;
   @media screen and (max-width: 768px) {
