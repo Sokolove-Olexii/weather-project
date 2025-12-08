@@ -1,0 +1,27 @@
+.HourlyChart {
+  padding: 26px 40px;
+  margin-bottom: 30px;
+  border-radius: 20px;
+  background: rgba(232, 232, 232, 1);
+  @media screen and (max-width: 768px) {
+    padding: 20px 35px;
+  }
+  @media screen and (max-width: 480px) {
+    padding: 18px 25px;
+  }
+  &_title {
+    color: rgba(0, 0, 0, 1);
+    font-family: "Montserrat", sans-serif;
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 20px;
+    @media screen and (max-width: 768px) {
+      font-size: 12px;
+      line-height: 15px;
+    }
+    @media screen and (max-width: 480px) {
+      font-size: 10px;
+      line-height: 12px;
+    }
+  }
+}

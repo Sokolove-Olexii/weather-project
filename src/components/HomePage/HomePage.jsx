@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { Slide, toast } from "react-toastify";
 import { Header } from "../Header/Header.jsx";
 import { Hero } from "../Hero/Hero.jsx";
 import { WeatherCard } from "../WeatherCard/WeatherCard.jsx";
@@ -7,6 +8,7 @@ import { DailyForecast } from "../DailyForecast/DailyForecast.jsx";
 import { Interact } from "../Interact/Interact.jsx";
 import { CoverflowSlider } from "../Slider/Slider.jsx";
 import { Footer } from "../Footer/Footer.jsx";
+import { HourlyChart } from "../HourlyChart/HourlyChart.jsx";
 
 const API_KEY = "352776a7cec67a372aa5f5597af2eab5";
 
@@ -14,6 +16,7 @@ export const HomePage = () => {
   const [cities, setCities] = useState([]);
   const [dailyForecastData, setDailyForecastData] = useState(null);
   const [seeMoreData, setSeeMoreData] = useState(null);
+  const [hourlyData, setHourlyData] = useState(null);
 
   // api.open-meteo.com/v1
   const convertWeatherDescription = (code) => {
@@ -50,13 +53,40 @@ export const HomePage = () => {
     return "02d"; // Default: partly cloudy
   };
 
+  const getHourlyForecast = async (city) => {
+    const res = await fetch(
+      `https://api.openweathermap.org/data/2.5/forecast?q=${city.name}&units=metric&appid=${API_KEY}`
+    );
+
+    const data = await res.json();
+
+    return data.list.map((item) => ({
+      time: item.dt_txt.slice(11, 16),
+      temp: Math.round(item.main.temp),
+    }));
+  };
+
+  const handleHourly = async (city) => {
+    const hourly = await getHourlyForecast(city);
+    setHourlyData(hourly);
+  };
+
   const getWeather = async (city) => {
     const res = await fetch(
       `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=${API_KEY}`
     );
 
-    if (!res.ok) throw new Error("City not found");
+    if (!res.ok) {
+      toast.error("City not found", {
+        transition: Slide,
+      });
+      return null;
+    } else {
+      toast.success("Added successfully");
+    }
     return await res.json();
+    // if (!res.ok) throw new Error("City not found");
+    // return await res.json();
   };
 
   const getTimeZone = async (city) => {
@@ -73,7 +103,6 @@ export const HomePage = () => {
       `https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}&daily=weathercode,temperature_2m_max,temperature_2m_min&timezone=${timezone}`
     );
 
-    if (!res.ok) throw new Error("Forecast not found");
     const data = await res.json();
 
     // format for DailyForecast.jsx
@@ -96,7 +125,7 @@ export const HomePage = () => {
   const addCity = async (city) => {
     try {
       const data = await getWeather(city);
-
+      if (!data) return;
       setCities((prev) =>
         prev.some((c) => c.name === data.name) ? prev : [...prev, data]
       );
@@ -128,7 +157,7 @@ export const HomePage = () => {
 
   const refreshCity = async (cityName) => {
     const updated = await getWeather(cityName);
-
+    if (!updated) return;
     setCities((prev) => prev.map((c) => (c.name === cityName ? updated : c)));
   };
 
@@ -149,10 +178,6 @@ export const HomePage = () => {
   useEffect(() => {
     localStorage.setItem("cities", JSON.stringify(cities.map((c) => c.name)));
   }, [cities]);
-
-  // const toggleSeeMore = (city) => {
-  //   setSeeMoreData((prev) => (prev && prev.id === city.id ? null : city));
-  // };
 
   const handleCloseSeeMore = () => {
     setSeeMoreData(false);
@@ -181,6 +206,7 @@ export const HomePage = () => {
               onDelete={() => deleteCity(city.name)}
               onOpen={() => console.log(city.name)}
               onToggleSeeMore={() => handleOpenSeeMore(city)}
+              onHourlyForecast={handleHourly}
             />
           ))}
         </section>
@@ -197,6 +223,8 @@ export const HomePage = () => {
             </section>
           </>
         )}
+        {hourlyData && <HourlyChart data={hourlyData} />}
+
         <Interact />
         <CoverflowSlider />
       </main>

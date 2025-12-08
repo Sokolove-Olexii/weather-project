@@ -50,6 +50,12 @@ export default function SignInModal({
           padding: "28px 80px",
           width: "600px",
           textAlign: "center",
+          "@media (max-width: 768px)": {
+            padding: "30px 45px",
+          },
+          "@media (max-width: 480px)": {
+            padding: "25px",
+          },
         },
       }}
     >
@@ -61,6 +67,10 @@ export default function SignInModal({
           lineHeight: "34px",
           mb: 3,
           textAlign: "center",
+          "@media (max-width: 768px)": {
+            fontSize: "20px",
+            lineHeight: "24px",
+          },
         }}
       >
         Sign up
@@ -84,6 +94,10 @@ export default function SignInModal({
                 fontWeight: 500,
                 lineHeight: "17px",
                 marginBottom: "15px",
+                "@media (max-width: 768px)": {
+                  fontSize: "12px",
+                  lineHeight: "15px",
+                },
               }}
             >
               Username
@@ -102,6 +116,10 @@ export default function SignInModal({
                 background: "rgba(228, 228, 228, 1)",
                 borderRadius: "10px",
                 "& fieldset": { border: "none" },
+                "@media (max-width: 768px)": {
+                  fontSize: "12px",
+                  lineHeight: "15px",
+                },
               }}
             />
           </Box>
@@ -113,6 +131,10 @@ export default function SignInModal({
                 fontWeight: 500,
                 lineHeight: "17px",
                 marginBottom: "15px",
+                "@media (max-width: 768px)": {
+                  fontSize: "12px",
+                  lineHeight: "15px",
+                },
               }}
             >
               Email
@@ -138,6 +160,10 @@ export default function SignInModal({
                 background: "rgba(228, 228, 228, 1)",
                 borderRadius: "10px",
                 "& fieldset": { border: "none" },
+                "@media (max-width: 768px)": {
+                  fontSize: "12px",
+                  lineHeight: "15px",
+                },
               }}
             />
           </Box>
@@ -149,6 +175,10 @@ export default function SignInModal({
                 fontWeight: 500,
                 lineHeight: "17px",
                 marginBottom: "15px",
+                "@media (max-width: 768px)": {
+                  fontSize: "12px",
+                  lineHeight: "15px",
+                },
               }}
             >
               Password
@@ -168,6 +198,10 @@ export default function SignInModal({
                 background: "rgba(228, 228, 228, 1)",
                 borderRadius: "10px",
                 "& fieldset": { border: "none" },
+                "@media (max-width: 768px)": {
+                  fontSize: "12px",
+                  lineHeight: "15px",
+                },
               }}
             />
           </Box>
@@ -177,8 +211,6 @@ export default function SignInModal({
             variant="contained"
             sx={{
               marginBottom: "15px",
-              width: "114px",
-              height: "37px",
               padding: "10px 30px 10px 30px",
               borderRadius: "10px",
               backgroundColor: "rgba(255, 179, 108, 1)",
@@ -189,6 +221,12 @@ export default function SignInModal({
               fontWeight: "400",
               lineHeight: "17px",
               mt: 2,
+              transition: "transform 0.2s, box-shadow 0.2s",
+              cursor: "pointer",
+              "&:hover": {
+                transform: "translateY(-0.15em)",
+                boxShadow: "0 0 0.3em 0em",
+              },
             }}
           >
             Sign Up

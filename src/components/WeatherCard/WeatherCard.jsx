@@ -10,6 +10,7 @@ export const WeatherCard = ({
   onDelete,
   onOpen,
   onToggleSeeMore,
+  onHourlyForecast,
 }) => {
   const [spin, setSpin] = useState(false);
   const [heartAnim, setHeartAnim] = useState(false);
@@ -37,7 +38,15 @@ export const WeatherCard = ({
       </div>
       <p className={styles.weatherCard_time}>{timeString}</p>
 
-      <button className={styles.weatherCard_forecast}>Hourly forecast</button>
+      <button
+        className={styles.weatherCard_forecast}
+        onClick={(e) => {
+          e.stopPropagation();
+          onHourlyForecast(data);
+        }}
+      >
+        Hourly forecast
+      </button>
 
       <div className={styles.dateDiv}>
         <p className={styles.dateDiv_date}>{formattedDate}</p>
