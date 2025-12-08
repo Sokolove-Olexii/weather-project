@@ -1,67 +1,60 @@
-// src/components/LiquidGlassButton/LiquidGlassButton.jsx
+// import { useRef, useEffect, useState } from "react";
+// import styles from "./LiquidGlassButton.module.scss";
+// import searchImg from "../../images/Svg/searchImg.svg";
 
-export const LiquidGlassButton = ({ children, onClick }) => {
-  return (
-    <div>
-      {/* SVG-фильтр должен быть один раз на странице */}
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        role="presentation"
-        style={{ display: "none" }}
-      >
-        <filter
-          id="glass-distortion"
-          x="0%"
-          y="0%"
-          width="100%"
-          height="100%"
-          filterUnits="objectBoundingBox"
-        >
-          <feTurbulence
-            type="fractalNoise"
-            baseFrequency="0.001 0.005"
-            numOctaves="1"
-            seed="17"
-            result="turbulence"
-          />
-          <feComponentTransfer in="turbulence" result="mapped">
-            <feFuncR type="gamma" amplitude="1" exponent="10" offset="0.5" />
-            <feFuncG type="gamma" amplitude="0" exponent="1" offset="0" />
-            <feFuncB type="gamma" amplitude="0" exponent="1" offset="0.5" />
-          </feComponentTransfer>
-          <feGaussianBlur in="turbulence" stdDeviation="3" result="softMap" />
-          <feSpecularLighting
-            in="softMap"
-            surfaceScale="5"
-            specularConstant="1"
-            specularExponent="100"
-            lightingColor="white"
-            result="specLight"
-          >
-            <fePointLight x="-200" y="-200" z="300" />
-          </feSpecularLighting>
-          <feComposite
-            in="specLight"
-            operator="arithmetic"
-            k1="0"
-            k2="1"
-            k3="1"
-            k4="0"
-            result="litImage"
-          />
-          <feDisplacementMap
-            in="SourceGraphic"
-            in2="softMap"
-            scale="200"
-            xChannelSelector="R"
-            yChannelSelector="G"
-          />
-        </filter>
-      </svg>
+// export const LiquidGlassSearch = ({ onSearch }) => {
+//   const [query, setQuery] = useState("");
+//   const containerRef = useRef(null);
+//   const blobRef = useRef(null);
 
-      <button className="liquid-glass" onClick={onClick}>
-        {children}
-      </button>
-    </div>
-  );
-};
+//   useEffect(() => {
+//     const container = containerRef.current;
+//     const blob = blobRef.current;
+
+//     if (!container || !blob) return;
+
+//     const handleMouseMove = (e) => {
+//       const rect = container.getBoundingClientRect();
+//       const x = e.clientX - rect.left;
+//       const y = e.clientY - rect.top;
+
+//       blob.style.left = `${x}px`;
+//       blob.style.top = `${y}px`;
+//     };
+
+//     container.addEventListener("mousemove", handleMouseMove);
+//     return () => container.removeEventListener("mousemove", handleMouseMove);
+//   }, []);
+
+//   const handleSearch = () => {
+//     if (query.trim()) {
+//       onSearch(query.trim());
+//       setQuery("");
+//     }
+//   };
+
+//   const handleKey = (e) => {
+//     if (e.key === "Enter") handleSearch();
+//   };
+
+//   return (
+//     <div ref={containerRef} className={styles.liquidSearch}>
+//       <span className={styles.blob} ref={blobRef}></span>
+//       <input
+//         type="text"
+//         placeholder="Search location..."
+//         className={styles.liquidSearch_input}
+//         value={query}
+//         onChange={(e) => setQuery(e.target.value)}
+//         onKeyDown={handleKey}
+//       />
+//       <button className={styles.liquidSearch_button} onClick={handleSearch}>
+//         <img
+//           src={searchImg}
+//           alt="Search"
+//           className={styles.liquidSearch_icon}
+//         />
+//       </button>
+//     </div>
+//   );
+// };

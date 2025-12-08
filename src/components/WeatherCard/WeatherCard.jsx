@@ -37,7 +37,6 @@ export const WeatherCard = ({
         <p className={styles.upperDiv_text}>{data.sys.country}</p>
       </div>
       <p className={styles.weatherCard_time}>{timeString}</p>
-
       <button
         className={styles.weatherCard_forecast}
         onClick={(e) => {
@@ -47,7 +46,6 @@ export const WeatherCard = ({
       >
         Hourly forecast
       </button>
-
       <div className={styles.dateDiv}>
         <p className={styles.dateDiv_date}>{formattedDate}</p>
         <div className={styles.dateDiv_line}></div>

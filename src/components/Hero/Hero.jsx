@@ -45,7 +45,6 @@ export const Hero = ({ onSearch }) => {
               </li>
             </ul>
           </div>
-
           <div className={styles.HeroSearch}>
             <input
               type="text"
