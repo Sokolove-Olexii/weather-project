@@ -41,7 +41,7 @@ export const WeatherCard = ({
         className={styles.weatherCard_forecast}
         onClick={(e) => {
           e.stopPropagation();
-          onHourlyForecast(data);
+          onHourlyForecast();
         }}
       >
         Hourly forecast

@@ -54,12 +54,15 @@
     font-size: 12px;
     font-weight: 500;
     line-height: 15px;
-    transition: transform 0.2s, box-shadow 0.2s;
     cursor: pointer;
-
+    transition: transform 0.3s, box-shadow 0.3s, background-color 0.3s;
     &:hover {
-      transform: translateY(-0.15em);
-      box-shadow: 0 0 0.3em 0em;
+      background-color: rgba(255, 140, 66, 1);
+      box-shadow: 0 0 15px rgba(255, 179, 108, 0.6);
+    }
+
+    &:active {
+      transform: scale(1.1);
     }
   }
   &_container {
@@ -71,21 +74,19 @@
   }
   &_logOut {
     position: absolute;
-    background-color: rgba(255, 255, 255, 1);
-    top: 100%;
-    right: 0;
+    background-color: transparent;
+    top: 140%;
+    right: -80%;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     border-radius: 10px;
     z-index: 101;
   }
   &_logOutBtn {
     width: 89px;
-    height: 35px;
+    height: 30px;
     display: flex;
-    flex-direction: row;
     justify-content: center;
     align-items: center;
-    padding: 10px 20px 10px 20px;
     border-radius: 10px;
     border: none;
     font-family: "Montserrat Alternates", sans-serif;
@@ -95,10 +96,14 @@
     background: rgba(255, 179, 108, 1);
     color: rgba(0, 0, 0, 1);
     cursor: pointer;
-    transition: transform 0.2s;
-
+    transition: transform 0.3s, box-shadow 0.3s, background-color 0.3s;
     &:hover {
-      transform: scale(1.05);
+      background-color: rgba(255, 140, 66, 1);
+      box-shadow: 0 0 15px rgba(255, 179, 108, 0.6);
+    }
+
+    &:active {
+      transform: scale(1.1);
     }
   }
   &_username {

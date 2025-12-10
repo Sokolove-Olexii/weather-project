@@ -13,6 +13,7 @@ import { HourlyChart } from "../HourlyChart/HourlyChart.jsx";
 const API_KEY = "352776a7cec67a372aa5f5597af2eab5";
 
 export const HomePage = () => {
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [cities, setCities] = useState([]);
   const [dailyForecastData, setDailyForecastData] = useState(null);
   const [seeMoreData, setSeeMoreData] = useState(null);
@@ -67,8 +68,20 @@ export const HomePage = () => {
   };
 
   const handleHourly = async (city) => {
+    if (!isLoggedIn) {
+      toast.error("You must log in first");
+      return;
+    }
+    if (hourlyData && hourlyData.city === city.name) {
+      setHourlyData(null);
+      return;
+    }
+
     const hourly = await getHourlyForecast(city);
-    setHourlyData(hourly);
+    setHourlyData({
+      city: city.name,
+      data: hourly,
+    });
   };
 
   const getWeather = async (city) => {
@@ -81,9 +94,9 @@ export const HomePage = () => {
         transition: Slide,
       });
       return null;
-    } else {
-      toast.success("Added successfully");
-    }
+    } // else {
+    //   // toast.success("Added successfully");
+    // }
     return await res.json();
     // if (!res.ok) throw new Error("City not found");
     // return await res.json();
@@ -135,6 +148,10 @@ export const HomePage = () => {
   };
 
   const handleOpenSeeMore = async (city) => {
+    if (!isLoggedIn) {
+      toast.error("You must log in first");
+      return;
+    }
     if (seeMoreData && seeMoreData.name === city.name) {
       handleCloseSeeMore();
       return;
@@ -182,11 +199,12 @@ export const HomePage = () => {
   const handleCloseSeeMore = () => {
     setSeeMoreData(false);
     setDailyForecastData(false);
+    setHourlyData(false);
   };
 
   return (
     <>
-      <Header />
+      <Header setIsLoggedIn={setIsLoggedIn} isLoggedIn={isLoggedIn} />
       <main>
         <Hero onSearch={addCity} />
         <section
@@ -206,13 +224,17 @@ export const HomePage = () => {
               onDelete={() => deleteCity(city.name)}
               onOpen={() => console.log(city.name)}
               onToggleSeeMore={() => handleOpenSeeMore(city)}
-              onHourlyForecast={handleHourly}
+              onHourlyForecast={() => handleHourly(city)}
             />
           ))}
         </section>
         {seeMoreData && (
           <>
-            <SeeMore data={seeMoreData} onClose={handleCloseSeeMore} />
+            <SeeMore
+              data={seeMoreData}
+              onClose={handleCloseSeeMore}
+              isLoggedIn={isLoggedIn}
+            />
 
             <section style={{ padding: "80px 0" }}>
               {dailyForecastData ? (
@@ -223,8 +245,9 @@ export const HomePage = () => {
             </section>
           </>
         )}
-        {hourlyData && <HourlyChart data={hourlyData} />}
-
+        {hourlyData && (
+          <HourlyChart data={hourlyData.data} isLoggedIn={isLoggedIn} />
+        )}
         <Interact />
         <CoverflowSlider />
       </main>

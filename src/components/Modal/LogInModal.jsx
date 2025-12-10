@@ -13,6 +13,7 @@ export default function LogInModal({
   onClose,
   onSwitchToSignUp,
   onLoginSuccess,
+  setIsLoggedIn,
 }) {
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -22,6 +23,7 @@ export default function LogInModal({
     console.log("Email:", email);
     console.log("Password:", password);
     onLoginSuccess({ username, email });
+    setIsLoggedIn(true);
     onClose();
   };
 

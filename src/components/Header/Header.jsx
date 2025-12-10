@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { Container } from "../Container/Container";
+import { Slide, toast } from "react-toastify";
 import styles from "./Header.module.scss";
 import logo from "../../images/Svg/Logo.svg";
 import user from "../../images/Svg/User.svg";
@@ -7,11 +8,12 @@ import menuImg from "../../images/Svg/menuImg.svg";
 import SignUpModal from "../Modal/SignInModal";
 import LoginModal from "../Modal/LogInModal";
 
-export const Header = () => {
+export const Header = ({ setIsLoggedIn, isLoggedIn }) => {
   const [openSignUp, setOpenSignUp] = useState(false);
   const [openLogin, setOpenLogin] = useState(false);
   const [openSignOut, setOpenSignOut] = useState(false);
   const [openMenu, setOpenMenu] = useState(false);
+  const [openProfile, setOpenProfile] = useState(false);
   const [userData, setUserData] = useState(null);
 
   const switchToLogin = () => {
@@ -28,6 +30,16 @@ export const Header = () => {
     localStorage.removeItem("user");
     setUserData(null);
     setOpenSignOut(false);
+    setIsLoggedIn(false);
+  };
+
+  const profileOpen = () => {
+    if (!isLoggedIn) {
+      toast.error("You must log in first");
+      return;
+    }
+    toast.info("We didn't add profile feature");
+    setOpenProfile((prev) => !prev);
   };
 
   const menuOpen = () => {
@@ -36,6 +48,7 @@ export const Header = () => {
 
   const handleUserLogin = (data) => {
     setUserData(data);
+    setIsLoggedIn(true);
     localStorage.setItem("user", JSON.stringify(data));
   };
 
@@ -43,6 +56,7 @@ export const Header = () => {
     const savedUser = localStorage.getItem("user");
     if (savedUser) {
       setUserData(JSON.parse(savedUser));
+      setIsLoggedIn(true);
     }
   }, []);
 
@@ -110,6 +124,7 @@ export const Header = () => {
                   onClose={() => setOpenSignUp(false)}
                   onSwitchToLogin={switchToLogin}
                   onLoginSuccess={handleUserLogin}
+                  setIsLoggedIn={setIsLoggedIn}
                 />
 
                 <LoginModal
@@ -117,11 +132,12 @@ export const Header = () => {
                   onClose={() => setOpenLogin(false)}
                   onSwitchToSignUp={switchToSignUp}
                   onLoginSuccess={handleUserLogin}
+                  setIsLoggedIn={setIsLoggedIn}
                 />
               </li>
 
               <li className={styles.HeaderRlist_li}>
-                <a className={styles.HeaderRlist_profile}>
+                <a className={styles.HeaderRlist_profile} onClick={profileOpen}>
                   <img src={user} className={styles.User} alt="userIcon" />
                 </a>
               </li>
@@ -147,7 +163,10 @@ export const Header = () => {
                   <li className={styles.HeaderList_li}>Menu</li>
                 </ul>
                 <div className={styles.HeaderMenuRightDiv}>
-                  <a className={styles.HeaderRlist_profile}>
+                  <a
+                    className={styles.HeaderRlist_profile}
+                    onClick={profileOpen}
+                  >
                     <img src={user} className={styles.User} alt="userIcon" />
                   </a>
                   {userData ? (
