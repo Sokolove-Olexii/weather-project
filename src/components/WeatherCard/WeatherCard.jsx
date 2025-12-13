@@ -10,6 +10,8 @@ export const WeatherCard = ({
   onDelete,
   onOpen,
   onToggleSeeMore,
+  isLiked,
+  onToggleLike,
   onHourlyForecast,
 }) => {
   const [spin, setSpin] = useState(false);
@@ -86,6 +88,7 @@ export const WeatherCard = ({
           onClick={(e) => {
             e.stopPropagation();
             setHeartAnim(true);
+            onToggleLike(data.name);
             setTimeout(() => setHeartAnim(false), 400);
           }}
         />

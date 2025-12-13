@@ -27,7 +27,7 @@ export const Footer = () => {
             <p className={styles.FooterContactUs_text}>Contact us</p>
             <ul className={styles.FooterContactUs_list}>
               <li>
-                <a href="">
+                <a href="https://www.instagram.com/">
                   <img
                     src={instagramImg}
                     alt="#"
@@ -36,7 +36,7 @@ export const Footer = () => {
                 </a>
               </li>
               <li>
-                <a href="">
+                <a href="https://www.facebook.com/">
                   <img
                     src={facebookImg}
                     alt="#"
@@ -45,7 +45,7 @@ export const Footer = () => {
                 </a>
               </li>
               <li>
-                <a href="">
+                <a href="https://www.whatsapp.com/">
                   <img
                     src={whatsappImg}
                     alt="#"

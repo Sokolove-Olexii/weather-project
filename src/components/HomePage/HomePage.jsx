@@ -9,7 +9,6 @@ import { Interact } from "../Interact/Interact.jsx";
 import { CoverflowSlider } from "../Slider/Slider.jsx";
 import { Footer } from "../Footer/Footer.jsx";
 import { HourlyChart } from "../HourlyChart/HourlyChart.jsx";
-
 const API_KEY = "352776a7cec67a372aa5f5597af2eab5";
 
 export const HomePage = () => {
@@ -58,9 +57,7 @@ export const HomePage = () => {
     const res = await fetch(
       `https://api.openweathermap.org/data/2.5/forecast?q=${city.name}&units=metric&appid=${API_KEY}`
     );
-
     const data = await res.json();
-
     return data.list.map((item) => ({
       time: item.dt_txt.slice(11, 16),
       temp: Math.round(item.main.temp),
@@ -72,11 +69,11 @@ export const HomePage = () => {
       toast.error("You must log in first");
       return;
     }
+
     if (hourlyData && hourlyData.city === city.name) {
       setHourlyData(null);
       return;
     }
-
     const hourly = await getHourlyForecast(city);
     setHourlyData({
       city: city.name,
@@ -106,7 +103,6 @@ export const HomePage = () => {
     const res = await fetch(
       `https://api.open-meteo.com/v1/geocoding?name=${city}`
     );
-
     const data = await res.json();
     return data?.results?.[0]?.timezone || "UTC";
   };
@@ -117,7 +113,6 @@ export const HomePage = () => {
     );
 
     const data = await res.json();
-
     // format for DailyForecast.jsx
     return data.daily.time.map((date, i) => ({
       dt: Date.parse(date + "T00:00:00Z") / 1000,
@@ -184,6 +179,7 @@ export const HomePage = () => {
 
   useEffect(() => {
     const saved = localStorage.getItem("cities");
+
     if (saved) {
       const list = JSON.parse(saved);
       Promise.all(list.map((name) => getWeather(name)))

@@ -1,5 +1,6 @@
 import { Container } from "../Container/Container";
 import { useState } from "react";
+import { toast } from "react-toastify";
 import searchImg from "../../images/Svg/searchImg.svg";
 import styles from "./Hero.module.scss";
 
@@ -53,10 +54,13 @@ export const Hero = ({ onSearch }) => {
   };
 
   const handleSearch = () => {
-    if (query.trim()) {
-      onSearch(query.trim());
-      setQuery("");
+    if (query.trim() === "") {
+      toast.info("Будь ласка, введіть назву міста!");
+      return;
     }
+
+    onSearch(query.trim());
+    setQuery("");
   };
   const handleKey = (e) => {
     if (e.key === "Enter") handleSearch();
