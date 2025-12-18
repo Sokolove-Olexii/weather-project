@@ -7,7 +7,7 @@ import whatsappImg from "../../images/whatsappImg.png";
 
 export const Footer = () => {
   return (
-    <section className={styles.Footer}>
+    <section className={styles.Footer} id="footer">
       <Container>
         <div className={styles.Footer_contentWrapper}>
           <div className={styles.Footer_mobileWrapper}>

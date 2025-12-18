@@ -66,7 +66,7 @@ export const HomePage = () => {
 
   const handleHourly = async (city) => {
     if (!isLoggedIn) {
-      toast.error("You must log in first");
+      toast.error("Вам потрібно зареєструватись");
       return;
     }
 
@@ -111,8 +111,8 @@ export const HomePage = () => {
     const res = await fetch(
       `https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}&daily=weathercode,temperature_2m_max,temperature_2m_min&timezone=${timezone}`
     );
-
     const data = await res.json();
+
     // format for DailyForecast.jsx
     return data.daily.time.map((date, i) => ({
       dt: Date.parse(date + "T00:00:00Z") / 1000,
@@ -144,7 +144,7 @@ export const HomePage = () => {
 
   const handleOpenSeeMore = async (city) => {
     if (!isLoggedIn) {
-      toast.error("You must log in first");
+      toast.error("Вам потрібно зареєструватись");
       return;
     }
     if (seeMoreData && seeMoreData.name === city.name) {

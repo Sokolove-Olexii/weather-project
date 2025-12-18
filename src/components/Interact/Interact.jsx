@@ -7,7 +7,7 @@ import FourthImg from "../../images/InteractPage/Fourth-Interact-Img.jpg";
 
 export const Interact = () => {
   return (
-    <section className={styles.Interact}>
+    <section className={styles.Interact} id="news">
       <Container>
         <p className={styles.Interact_title}>Interacting with our pets</p>
         <ul className={styles.InteractList}>
@@ -52,7 +52,9 @@ export const Interact = () => {
             </p>
           </li>
         </ul>
-        <button className={styles.Interact_button}>See more</button>
+        <a href="https://news.google.com/home?hl=uk&gl=UA&ceid=UA%3Auk">
+          <button className={styles.Interact_button}>See more</button>
+        </a>
       </Container>
     </section>
   );

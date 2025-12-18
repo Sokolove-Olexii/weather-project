@@ -35,10 +35,10 @@ export const Header = ({ setIsLoggedIn, isLoggedIn }) => {
 
   const profileOpen = () => {
     if (!isLoggedIn) {
-      toast.error("You must log in first");
+      toast.error("Вам потрібно зареєструватись");
       return;
     }
-    toast.info("We didn't add profile feature");
+    toast.info("Поки це не доступно");
     setOpenProfile((prev) => !prev);
   };
 
@@ -50,6 +50,26 @@ export const Header = ({ setIsLoggedIn, isLoggedIn }) => {
     setUserData(data);
     setIsLoggedIn(true);
     localStorage.setItem("user", JSON.stringify(data));
+  };
+
+  const scrollToFooter = () => {
+    const footerElement = document.getElementById("footer");
+    if (footerElement) {
+      footerElement.scrollIntoView({ behavior: "smooth" });
+    }
+    if (openMenu) {
+      setOpenMenu(false);
+    }
+  };
+
+  const scrollToNews = () => {
+    const footerElement = document.getElementById("news");
+    if (footerElement) {
+      footerElement.scrollIntoView({ behavior: "smooth" });
+    }
+    if (openMenu) {
+      setOpenMenu(false);
+    }
   };
 
   useEffect(() => {
@@ -73,9 +93,11 @@ export const Header = ({ setIsLoggedIn, isLoggedIn }) => {
           <div>
             <ul className={styles.HeaderList}>
               <li className={styles.HeaderList_li}>Who we are</li>
-              <li className={styles.HeaderList_li}>Contacts</li>
-              <li className={styles.HeaderList_li} onClick={menuOpen}>
-                Menu
+              <li className={styles.HeaderList_li} onClick={scrollToFooter}>
+                Contacts
+              </li>
+              <li className={styles.HeaderList_li} onClick={scrollToNews}>
+                News
               </li>
             </ul>
           </div>
