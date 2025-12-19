@@ -24,7 +24,6 @@
     transition: 0.2s;
   }
   &_li:hover {
-    text-shadow: 0 0 6px rgba(255, 143, 63, 0.5);
     transform: scale(1.05);
   }
 }
@@ -209,4 +208,59 @@
   flex-direction: column;
   gap: 15px;
   position: relative;
+}
+
+.menuButton {
+  display: block;
+  cursor: pointer;
+  position: relative;
+  width: 45px;
+  height: 45px;
+  z-index: 101;
+
+  input {
+    display: none;
+  }
+
+  svg {
+    width: 100%;
+    height: 100%;
+    transition: transform 0.3s ease;
+  }
+
+  .line {
+    fill: none;
+    stroke: #000;
+    stroke-width: 6;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    transition: all 0.45s cubic-bezier(0.645, 0.045, 0.355, 1);
+
+    --length: 24;
+    --total-length: 111.22813415527344;
+    --offset: -50.22813415527344;
+
+    stroke-dasharray: var(--length) var(--total-length);
+    stroke-dashoffset: var(--offset);
+  }
+
+  .line2 {
+    --total-length: 99;
+    --offset: -38;
+  }
+
+  input:checked + svg .line {
+    transform: translateX(30px);
+  }
+
+  input:checked + svg .line1,
+  input:checked + svg .line3 {
+    --length: 22.627416998;
+    --offset: -16.9705627485;
+  }
+
+  input:checked + svg .line2 {
+    --length: 0;
+    --offset: -20;
+  }
 }

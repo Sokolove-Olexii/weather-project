@@ -166,12 +166,33 @@ export const Header = ({ setIsLoggedIn, isLoggedIn }) => {
             </ul>
             <div className={styles.HeaderMobileMenu} onClick={menuOpen}>
               <div className={styles.HeaderMobileMenu_position}>
-                <p className={styles.HeaderMobileMenu_text}>Menu</p>
+                {/* <p className={styles.HeaderMobileMenu_text}>Menu</p>
                 <img
                   src={menuImg}
                   alt="MenuImg"
                   className={styles.HeaderMobileMenu_icon}
-                />
+                /> */}
+                <label className={styles.menuButton}>
+                  <input
+                    type="checkbox"
+                    checked={openMenu}
+                    onChange={menuOpen}
+                  />
+                  <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                    <path
+                      className={`${styles.line} ${styles.line1}`}
+                      d="M0 70l28-28c2-2 2-2 7-2h64"
+                    />
+                    <path
+                      className={`${styles.line} ${styles.line2}`}
+                      d="M0 50h99"
+                    />
+                    <path
+                      className={`${styles.line} ${styles.line3}`}
+                      d="M0 30l28 28c2 2 2 2 7 2h64"
+                    />
+                  </svg>
+                </label>
               </div>
               <div
                 className={`${styles.HeaderMenu} ${

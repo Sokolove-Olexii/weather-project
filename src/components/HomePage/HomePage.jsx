@@ -6,6 +6,7 @@ import { WeatherCard } from "../WeatherCard/WeatherCard.jsx";
 import { SeeMore } from "../SeeMore/SeeMore.jsx";
 import { DailyForecast } from "../DailyForecast/DailyForecast.jsx";
 import { Interact } from "../Interact/Interact.jsx";
+import { FilterBar } from "../FilterBar/FilterBar.jsx";
 import { CoverflowSlider } from "../Slider/Slider.jsx";
 import { Footer } from "../Footer/Footer.jsx";
 import { HourlyChart } from "../HourlyChart/HourlyChart.jsx";
@@ -17,6 +18,8 @@ export const HomePage = () => {
   const [dailyForecastData, setDailyForecastData] = useState(null);
   const [seeMoreData, setSeeMoreData] = useState(null);
   const [hourlyData, setHourlyData] = useState(null);
+  const [likedCities, setLikedCities] = useState([]);
+  const [filterMode, setFilterMode] = useState("all");
 
   // api.open-meteo.com/v1
   const convertWeatherDescription = (code) => {
@@ -175,6 +178,7 @@ export const HomePage = () => {
 
   const deleteCity = (cityName) => {
     setCities((prev) => prev.filter((c) => c.name !== cityName));
+    setLikedCities((prev) => prev.filter((name) => name !== cityName));
   };
 
   useEffect(() => {
@@ -192,6 +196,40 @@ export const HomePage = () => {
     localStorage.setItem("cities", JSON.stringify(cities.map((c) => c.name)));
   }, [cities]);
 
+  useEffect(() => {
+    const savedLikes = localStorage.getItem("likedCities");
+    if (savedLikes) {
+      setLikedCities(JSON.parse(savedLikes));
+    }
+  }, []);
+
+  useEffect(() => {
+    localStorage.setItem("likedCities", JSON.stringify(likedCities));
+  }, [likedCities]);
+
+  const handleToggleLike = (cityName) => {
+    if (likedCities.includes(cityName)) {
+      setLikedCities((prev) => prev.filter((name) => name !== cityName));
+    } else {
+      setLikedCities((prev) => [...prev, cityName]);
+    }
+  };
+
+  const getFilteredCities = () => {
+    if (filterMode === "all") return cities;
+
+    if (filterMode === "liked") {
+      return cities.filter((city) => likedCities.includes(city.name));
+    }
+
+    if (filterMode === "unliked") {
+      return cities.filter((city) => !likedCities.includes(city.name));
+    }
+    return cities;
+  };
+
+  const displayedCities = getFilteredCities();
+
   const handleCloseSeeMore = () => {
     setSeeMoreData(false);
     setDailyForecastData(false);
@@ -203,6 +241,7 @@ export const HomePage = () => {
       <Header setIsLoggedIn={setIsLoggedIn} isLoggedIn={isLoggedIn} />
       <main>
         <Hero onSearch={addCity} />
+        <FilterBar currentFilter={filterMode} onFilterChange={setFilterMode} />
         <section
           style={{
             padding: "40px 0",
@@ -212,17 +251,25 @@ export const HomePage = () => {
             justifyContent: "center",
           }}
         >
-          {cities.map((city) => (
-            <WeatherCard
-              key={city.id}
-              data={city}
-              onRefresh={() => refreshCity(city.name)}
-              onDelete={() => deleteCity(city.name)}
-              onOpen={() => console.log(city.name)}
-              onToggleSeeMore={() => handleOpenSeeMore(city)}
-              onHourlyForecast={() => handleHourly(city)}
-            />
-          ))}
+          {displayedCities.length > 0 ? (
+            displayedCities.map((city) => (
+              <WeatherCard
+                key={city.id}
+                data={city}
+                onRefresh={() => refreshCity(city.name)}
+                onDelete={() => deleteCity(city.name)}
+                onOpen={() => console.log(city.name)}
+                onToggleSeeMore={() => handleOpenSeeMore(city)}
+                onHourlyForecast={() => handleHourly(city)}
+                isLiked={likedCities.includes(city.name)}
+                onToggleLike={() => handleToggleLike(city.name)}
+              />
+            ))
+          ) : (
+            <p style={{ color: "white", width: "100%", textAlign: "center" }}>
+              Список пуст
+            </p>
+          )}
         </section>
         {seeMoreData && (
           <>
