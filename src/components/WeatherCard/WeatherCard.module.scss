@@ -1,3 +1,8 @@
+$trashColor1: #000000;
+$trashColor2: #333333;
+$trashColor3: #ffffff;
+$transition: all 0.2s ease-in-out;
+
 .weatherCard {
   padding: 15px 20px 21px;
   max-width: 320px;
@@ -236,6 +241,110 @@
       width: 84px;
       height: 27px;
     }
+  }
+}
+
+.trashBox {
+  width: 30px;
+  height: 30px;
+  position: relative;
+  cursor: pointer;
+  margin-left: 37px;
+
+  @media screen and (max-width: 768px) {
+    width: 24px;
+    height: 24px;
+  }
+
+  &:hover .trashTop {
+    transform: translate(-50%, -15%) rotate(-20deg);
+  }
+
+  &:hover .trashBtm {
+    transform: translate(-50%, -100%) rotate(5deg);
+  }
+
+  &:hover .trash {
+    top: 50%;
+    transform: translate(-42%, -50%) rotate(35deg);
+  }
+}
+
+.trashTop {
+  position: absolute;
+  top: 15%;
+  left: 50%;
+  transform: translate(-50%, -15%);
+  width: 80%;
+  height: 15%;
+  background: $trashColor1;
+  border-radius: 2px;
+  transform-origin: left bottom;
+  transition: $transition;
+
+  &::before {
+    content: "";
+    position: absolute;
+    bottom: 95%;
+    left: 50%;
+    transform: translate(-50%);
+    width: 30%;
+    height: 80%;
+    background: inherit;
+    border-radius: 2px 2px 0 0;
+  }
+}
+
+.trashBtm {
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translate(-50%, -100%);
+  width: 70%;
+  height: 65%;
+  background: $trashColor1;
+  border-radius: 2px;
+  transform-origin: left 70%;
+  transition: $transition;
+}
+
+.trashLines {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 60%;
+  height: 80%;
+  display: flex;
+  justify-content: space-around;
+
+  .trashLine {
+    width: 20%;
+    height: 100%;
+    background: lighten($trashColor1, 20%);
+    border-radius: 1px;
+  }
+}
+
+.trash {
+  position: absolute;
+  top: 80%;
+  left: 38%;
+  transform: translate(-38%, -80%) rotate(35deg);
+  width: 40%;
+  height: 40%;
+  background: $trashColor3;
+  border-radius: 1px;
+  transition: $transition;
+
+  &::before {
+    content: "";
+    position: absolute;
+    transform: translate(30%, -20%) rotate(25deg);
+    width: 100%;
+    height: 100%;
+    background: darken($trashColor3, 10%);
+    border-radius: 1px;
   }
 }
 

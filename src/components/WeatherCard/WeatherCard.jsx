@@ -1,7 +1,6 @@
 import { useState } from "react";
 import styles from "./WeatherCard.module.scss";
 import refreshImg from "../../images/Svg/refreshImg.svg";
-import deleteImg from "../../images/Svg/deleteImg.svg";
 
 export const WeatherCard = ({
   data,
@@ -101,16 +100,23 @@ export const WeatherCard = ({
         >
           See more
         </button>
-        <img
-          src={deleteImg}
-          alt="Delete"
-          className={styles.weatherBtnDiv_delete}
+        <div
+          className={styles.trashBox}
           onClick={(e) => {
             e.stopPropagation();
             onDelete(data.name);
             onToggleSeeMore();
           }}
-        />
+        >
+          <div className={styles.trash}></div>
+          <div className={styles.trashTop}></div>
+          <div className={styles.trashBtm}>
+            <div className={styles.trashLines}>
+              <div className={styles.trashLine}></div>
+              <div className={styles.trashLine}></div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   );

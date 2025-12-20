@@ -1,76 +1,52 @@
+@import "../sass/utils/mixins.scss";
+
 .Header {
-  display: flex;
+  @include flex(space-between, center);
   position: relative;
   background-color: rgba(255, 255, 255, 1);
-  align-items: center;
-  justify-content: space-between;
   z-index: 100;
+
+  &_logoIcon {
+    width: 82px;
+    height: 56px;
+    user-select: none;
+    cursor: pointer;
+  }
 }
 
 .HeaderList {
-  display: flex;
-  gap: 45px;
+  @include flex($gap: 45px);
   list-style: none;
+
   @media screen and (max-width: 768px) {
     display: none;
   }
+
   &_li {
     cursor: pointer;
-    color: rgba(0, 0, 0, 1);
-    font-family: "Montserrat Alternates", sans-serif;
-    font-size: 12px;
-    font-weight: 500;
-    line-height: 15px;
     transition: 0.2s;
-  }
-  &_li:hover {
-    transform: scale(1.05);
+    @include font(12px, 500, 15px, rgba(0, 0, 0, 1));
+
+    &:hover {
+      transform: scale(1.05);
+    }
   }
 }
 
 .HeaderRlist {
-  display: flex;
-  gap: 30px;
-  align-items: center;
+  @include flex($align: center, $gap: 30px);
   list-style: none;
+
   @media screen and (max-width: 768px) {
     display: none;
   }
-  &_btn {
-    width: 89px;
-    height: 35px;
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    gap: 10px;
-    padding: 10px 20px 10px 20px;
-    border-radius: 10px;
-    border: none;
-    background: rgba(255, 179, 108, 1);
-    color: rgba(0, 0, 0, 1);
-    font-family: "Montserrat Alternates", sans-serif;
-    font-size: 12px;
-    font-weight: 500;
-    line-height: 15px;
-    cursor: pointer;
-    transition: transform 0.3s, box-shadow 0.3s, background-color 0.3s;
-    &:hover {
-      background-color: rgba(255, 140, 66, 1);
-      box-shadow: 0 0 15px rgba(255, 179, 108, 0.6);
-    }
 
-    &:active {
-      transform: scale(1.1);
-    }
-  }
   &_container {
-    display: flex;
-    align-items: center;
-    gap: 4px;
+    @include flex($align: center, $gap: 4px);
     cursor: pointer;
     position: relative;
   }
+
   &_logOut {
     position: absolute;
     background-color: transparent;
@@ -80,22 +56,20 @@
     border-radius: 10px;
     z-index: 101;
   }
+
   &_logOutBtn {
     width: 89px;
     height: 30px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    @include flex-center;
+
     border-radius: 10px;
     border: none;
-    font-family: "Montserrat Alternates", sans-serif;
-    font-size: 12px;
-    font-weight: 500;
-    line-height: 15px;
+    @include font(12px, 500, $lh: 15px, $color: rgba(0, 0, 0, 1));
+
     background: rgba(255, 179, 108, 1);
-    color: rgba(0, 0, 0, 1);
     cursor: pointer;
     transition: transform 0.3s, box-shadow 0.3s, background-color 0.3s;
+
     &:hover {
       background-color: rgba(255, 140, 66, 1);
       box-shadow: 0 0 15px rgba(255, 179, 108, 0.6);
@@ -105,27 +79,42 @@
       transform: scale(1.1);
     }
   }
+
   &_username {
-    color: rgba(0, 0, 0, 1);
-    font-family: "Montserrat Alternates", sans-serif;
-    font-size: 12px;
-    font-weight: 500;
-    line-height: 15px;
+    @include font(12px, 500, 15px, rgba(0, 0, 0, 1), "Montserrat Alternates");
   }
+
   &_icon {
     width: 10px;
     height: 10px;
   }
+
   &_profile {
     cursor: pointer;
   }
-}
 
-.logoIcon {
-  width: 82px;
-  height: 56px;
-  user-select: none;
-  cursor: pointer;
+  &_btn {
+    width: 89px;
+    height: 35px;
+    @include flex-center;
+    gap: 10px;
+    padding: 10px 20px;
+    border-radius: 10px;
+    border: none;
+    background: rgba(255, 179, 108, 1);
+    @include font(12px, 500, 15px, rgba(0, 0, 0, 1), "Montserrat Alternates");
+    cursor: pointer;
+    transition: transform 0.3s, box-shadow 0.3s, background-color 0.3s;
+
+    &:hover {
+      background-color: rgba(255, 140, 66, 1);
+      box-shadow: 0 0 15px rgba(255, 179, 108, 0.6);
+    }
+
+    &:active {
+      transform: scale(1.1);
+    }
+  }
 }
 
 .User {
@@ -135,10 +124,9 @@
 
 .HeaderMobileMenu {
   position: static;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  @include flex-center;
   gap: 5px;
+
   user-select: none;
 
   @media screen and (min-width: 768px) {
@@ -146,9 +134,7 @@
   }
 
   &_position {
-    display: flex;
-    align-items: center;
-    gap: 4px;
+    @include flex($align: center, $gap: 4px);
     cursor: pointer;
     transition: 0.3s;
 
@@ -158,11 +144,7 @@
   }
 
   &_text {
-    color: rgba(0, 0, 0, 1);
-    font-family: "Montserrat Alternates", sans-serif;
-    font-size: 10px;
-    font-weight: 500;
-    line-height: 12px;
+    @include font(10px, 500, 12px, rgba(0, 0, 0, 1));
   }
 
   &_icon {
@@ -172,8 +154,7 @@
 }
 
 .HeaderMenu {
-  display: flex;
-  justify-content: space-between;
+  @include flex($justify: space-between);
   border-radius: 0 0 10px 10px;
   position: absolute;
   top: 100%;
@@ -196,17 +177,12 @@
   }
 
   &_list {
-    display: flex;
-    flex-direction: column;
-    gap: 25px;
+    @include flex($direction: column, $gap: 25px);
   }
 }
 
 .HeaderMenuRightDiv {
-  display: flex;
-  align-items: center;
-  flex-direction: column;
-  gap: 15px;
+  @include flex($direction: column, $align: center, $gap: 15px);
   position: relative;
 }
 

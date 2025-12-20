@@ -86,7 +86,7 @@ export const Header = ({ setIsLoggedIn, isLoggedIn }) => {
         <div className={styles.Header}>
           <div>
             <a className={styles.Header_logo}>
-              <img src={logo} className={styles.logoIcon} alt="logo" />
+              <img src={logo} className={styles.Header_logoIcon} alt="logo" />
             </a>
           </div>
 

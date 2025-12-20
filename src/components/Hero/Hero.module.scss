@@ -1,5 +1,12 @@
+@import "../sass/utils/mixins.scss";
+
 .Hero {
+  @include flex($align: center);
+  overflow: hidden;
   position: relative;
+  padding: 100px 0;
+  width: 100%;
+  min-height: 100vh;
   background: linear-gradient(
     180deg,
     #1a1410 0%,
@@ -9,13 +16,6 @@
     #d4773d 80%,
     #ffb36c 100%
   );
-  padding: 100px 0;
-  width: 100%;
-  min-height: 100vh;
-  color: white;
-  display: flex;
-  align-items: center;
-  overflow: hidden;
 
   @media screen and (max-width: 768px) {
     padding: 60px 0;
@@ -23,14 +23,6 @@
 
   @media screen and (max-width: 480px) {
     padding: 40px 0;
-  }
-
-  &_contentWrapper {
-    display: flex;
-    flex-direction: column;
-    text-align: center;
-    align-items: center;
-    width: 100%;
   }
 
   &_clouds {
@@ -382,48 +374,33 @@
   }
 
   &_contentWrapper {
+    @include flex($direction: column, $align: center);
     position: relative;
-    z-index: 2;
-    display: flex;
-    flex-direction: column;
-    text-align: center;
-    align-items: center;
     width: 100%;
+    z-index: 2;
+    text-align: center;
   }
 }
 
 .HeroTitlePosition {
-  display: flex;
-  justify-content: center;
+  @include flex($justify: center);
   width: 100%;
 
   &_title {
+    @include font(40px, 600, 49px, rgba(255, 255, 255, 1), "Montserrat");
     margin-bottom: 80px;
-    color: rgba(255, 255, 255, 1);
-    font-family: "Montserrat", sans-serif;
-    font-size: 40px;
-    font-weight: 600;
-    line-height: 49px;
     text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
 
     @media screen and (max-width: 768px) {
+      @include font(20px, $lh: 24px);
       margin-bottom: 40px;
-      font-size: 20px;
-      line-height: 24px;
-    }
-
-    @media screen and (max-width: 480px) {
-      margin-bottom: 20px;
-      font-size: 14px;
-      line-height: 17px;
     }
   }
 }
 
 .HeroList {
-  display: flex;
+  @include flex($gap: 50px);
   margin-bottom: 80px;
-  gap: 50px;
   flex-shrink: 0;
 
   @media screen and (max-width: 768px) {
@@ -437,21 +414,16 @@
   }
 
   &_li {
-    color: rgba(255, 255, 255, 1);
-    font-size: 24px;
-    font-weight: 500;
-    line-height: 29px;
+    @include font(24px, 600, 29px, rgba(255, 255, 255, 1), "Montserrat");
     flex-shrink: 0;
     text-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
 
     @media screen and (max-width: 768px) {
-      font-size: 14px;
-      line-height: 17px;
+      @include font(14px, $lh: 17px);
     }
 
     @media screen and (max-width: 480px) {
-      font-size: 10px;
-      line-height: 12px;
+      @include font(10px, $lh: 12px);
     }
   }
 
@@ -496,11 +468,9 @@
   }
 
   &_input {
+    @include font(14px, 500, null, rgba(0, 0, 0, 1));
     width: 100%;
     height: 100%;
-    color: rgba(0, 0, 0, 1);
-    font-size: 14px;
-    font-weight: 500;
     border-radius: 10px;
     background: rgba(217, 217, 217, 1);
     border: none;
@@ -532,6 +502,8 @@
   }
 
   &_button {
+    @include flex-center;
+
     position: absolute;
     right: 0;
     top: 0;
@@ -542,9 +514,6 @@
     border-radius: 0px 10px 10px 0px;
     background: rgba(255, 179, 108, 1);
     cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
     transition: all 0.3s;
     flex-shrink: 0;
     user-select: none;
