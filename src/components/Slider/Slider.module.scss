@@ -5,10 +5,10 @@
 }
 
 .SwiperSlide {
-  background-position: center;
-  background-size: cover;
   width: 384px;
   height: 211px;
+  background-position: center;
+  background-size: cover;
   opacity: 0.2;
   transition: opacity 0.5s ease, transform 0.5s ease;
   @media screen and (max-width: 480px) {

@@ -1,3 +1,5 @@
+@import "../sass/utils/mixins.scss";
+
 .DailyForecast {
   padding: 26px 77px 42px;
   border-radius: 20px;
@@ -5,31 +7,22 @@
   @media screen and (max-width: 768px) {
     padding: 20px 35px 35px;
   }
-  @media screen and (max-width: 480px) {
-  }
   &_title {
     margin-bottom: 20px;
-    color: rgba(0, 0, 0, 1);
-    font-family: "Montserrat", sans-serif;
-    font-size: 16px;
-    font-weight: 600;
-    line-height: 20px;
+    @include font(16px, 600, 20px, rgba(0, 0, 0, 1), "Montserrat");
     @media screen and (max-width: 768px) {
       margin-bottom: 17px;
-      font-size: 12px;
-      line-height: 15px;
+      @include font(12px, 600, 15px);
     }
     @media screen and (max-width: 480px) {
       margin-bottom: 25px;
-      font-size: 10px;
-      line-height: 12px;
+      @include font(10px, 600, 12px);
     }
   }
 }
 
 .DailyForecastList {
-  display: flex;
-  flex-direction: column;
+  @include flex($direction: column);
   gap: 10px;
   @media screen and (max-width: 768px) {
     gap: 17px;
@@ -41,8 +34,8 @@
   }
   &_li {
     padding: 0 50px;
-    align-items: center;
     display: grid;
+    align-items: center;
     grid-template-columns: 1fr auto 1fr;
     justify-content: row;
     border-radius: 10px;
@@ -56,26 +49,19 @@
       padding: 0 15px;
     }
     @media screen and (max-width: 480px) {
+      @include flex($direction: column);
       padding: 10px 0;
-      display: flex;
-      flex-direction: column;
     }
   }
   &_date {
     text-align: left;
-    color: rgba(0, 0, 0, 1);
-    font-family: "Montserrat", sans-serif;
-    font-size: 16px;
-    font-weight: 500;
-    line-height: 20px;
+    @include font(16px, 500, 20px, rgba(0, 0, 0, 1), "Montserrat");
     @media screen and (max-width: 768px) {
-      font-size: 14px;
-      line-height: 17px;
+      @include font(14px, 600, 17px);
     }
     @media screen and (max-width: 480px) {
       margin-bottom: 20px;
-      font-size: 10px;
-      line-height: 12px;
+      @include font(10px, 600, 12px);
     }
   }
   &_icon {
@@ -92,44 +78,28 @@
   }
   &_description {
     text-align: right;
-    color: rgba(0, 0, 0, 1);
-    font-family: "Montserrat", sans-serif;
-    font-size: 16px;
-    font-weight: 500;
-    line-height: 20px;
+    @include font(16px, 500, 20px, rgba(0, 0, 0, 1), "Montserrat");
     @media screen and (max-width: 768px) {
-      font-size: 14px;
-      line-height: 17px;
+      @include font(14px, 500, 17px);
     }
     @media screen and (max-width: 480px) {
-      font-size: 10px;
-      line-height: 12px;
+      @include font(10px, 500, 12px);
     }
   }
 }
 
 .DailyForecastListTemperature {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  justify-content: space-between;
+  @include flex($justify: center, $align: center);
   @media screen and (max-width: 480px) {
-    display: flex;
-    flex-direction: column;
+    @include flex($direction: column);
   }
   &_text {
-    color: rgba(0, 0, 0, 1);
-    font-family: "Montserrat", sans-serif;
-    font-size: 16px;
-    font-weight: 500;
-    line-height: 20px;
+    @include font(16px, 500, 20px, rgba(0, 0, 0, 1), "Montserrat");
     @media screen and (max-width: 768px) {
-      font-size: 14px;
-      line-height: 17px;
+      @include font(14px, 500, 17px);
     }
     @media screen and (max-width: 480px) {
-      font-size: 10px;
-      line-height: 12px;
+      @include font(10px, 500, 12px);
     }
   }
   &_position {

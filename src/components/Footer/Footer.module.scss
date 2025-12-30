@@ -1,17 +1,10 @@
+@import "../sass/utils/mixins.scss";
+
 .Footer {
-  margin-top: auto;
-  // background: rgba(255, 179, 108, 1);
-  background: linear-gradient(
-    180deg,
-    #ffb36c 0,
-    #d4773d 50%,
-    #a05a2c 100%,
-    // #6b3e1e 60%,
-    // #3d2415 80%,
-    // #1a1410 100%
-  );
-  padding: 40px 0;
   width: 100%;
+  padding: 40px 0;
+  margin-top: auto;
+  background: linear-gradient(180deg, #ffb36c 0, #d4773d 50%, #a05a2c 100%);
   @media screen and (max-width: 768px) {
     padding: 45px 0;
   }
@@ -32,48 +25,33 @@
     display: flex;
     gap: 103px;
     @media screen and (max-width: 768px) {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
+      @include flex($wrap: wrap, $justify: center);
     }
   }
 
   &_address {
     margin-bottom: 10px;
-    color: rgba(0, 0, 0, 1);
-    font-family: "Montserrat Alternates", sans-serif;
-    font-size: 16px;
-    font-weight: 500;
-    line-height: 20px;
+    @include font(16px, 500, 20px, rgba(0, 0, 0, 1), "Montserrat Alternates");
     @media screen and (max-width: 480px) {
-      font-size: 12px;
-      line-height: 15px;
+      @include font(12px, 500, 15px);
     }
     @media screen and (max-width: 768px) {
-      font-size: 14px;
-      line-height: 17px;
+      @include font(14px, 500, 17px);
     }
   }
 
   &_addressDescription {
-    color: rgba(0, 0, 0, 1);
-    font-family: "Montserrat Alternates", sans-serif;
-    font-size: 12px;
-    font-weight: 500;
-    line-height: 15px;
-    @media screen and (max-width: 480px) {
-      font-size: 8px;
-      line-height: 10px;
-    }
+    @include font(12px, 500, 15px, rgba(0, 0, 0, 1), "Montserrat Alternates");
     @media screen and (max-width: 768px) {
-      font-size: 10px;
-      line-height: 12px;
+      @include font(10px, 500, 12px);
+    }
+    @media screen and (max-width: 480px) {
+      @include font(8px, 500, 10px);
     }
   }
 
   &_mobileWrapper {
-    display: flex;
-    justify-content: row;
+    @include flex($justify: row);
     gap: 103px;
   }
 }
@@ -89,30 +67,20 @@
 
 .FooterContactUs {
   @media screen and (max-width: 768px) {
-    display: flex;
-    flex-wrap: wrap;
-    flex-direction: column;
-    align-items: center;
+    @include flex($direction: column, $wrap: wrap, $align: center);
   }
   &_text {
     margin-bottom: 10px;
-    color: rgba(0, 0, 0, 1);
-    font-family: "Montserrat Alternates", sans-serif;
-    font-size: 16px;
-    font-weight: 500;
-    line-height: 20px;
+    @include font(16px, 500, 20px, rgba(0, 0, 0, 1), "Montserrat Alternates");
     @media screen and (max-width: 480px) {
-      font-size: 12px;
-      line-height: 15px;
+      @include font(12px, 500, 15px);
     }
     @media screen and (max-width: 768px) {
-      font-size: 14px;
-      line-height: 17px;
+      @include font(14px, 500, 17px);
     }
   }
   &_list {
-    display: flex;
-    flex-direction: row;
+    @include flex($direction: row);
     gap: 20px;
   }
 }

@@ -1,3 +1,5 @@
+@import "../sass/utils/mixins.scss";
+
 .Interact {
   @media screen and (max-width: 1200px) {
     display: none;
@@ -5,18 +7,12 @@
   margin: 80px 0;
   &_title {
     margin-bottom: 40px;
-    color: rgba(0, 0, 0, 1);
-    font-family: "Montserrat", sans-serif;
-    font-size: 20px;
-    font-weight: 500;
-    line-height: 24px;
+    @include font(20px, 500, 24px, rgba(0, 0, 0, 1), "Montserrat");
   }
   &_button {
     width: 138px;
     height: 40px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    @include flex-center;
     border-radius: 10px;
     background: rgba(255, 179, 108, 1);
     transition: transform 0.3s, box-shadow 0.3s;
@@ -28,25 +24,19 @@
 }
 
 .InteractList {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 40px;
+  @include flex-center;
   margin-bottom: 20px;
+  gap: 40px;
   &_li {
     max-width: 270px;
   }
   &_img {
-    margin-bottom: 20px;
     width: 270px;
     height: 208px;
+    margin-bottom: 20px;
     border-radius: 10px;
   }
   &_text {
-    color: rgba(0, 0, 0, 1);
-    font-family: "Montserrat", sans-serif;
-    font-size: 16px;
-    font-weight: 500;
-    line-height: 20px;
+    @include font(16px, 500, 20px, rgba(0, 0, 0, 1), "Montserrat");
   }
 }
