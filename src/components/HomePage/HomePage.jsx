@@ -10,6 +10,7 @@ import { FilterBar } from "../FilterBar/FilterBar.jsx";
 import { CoverflowSlider } from "../Slider/Slider.jsx";
 import { Footer } from "../Footer/Footer.jsx";
 import { HourlyChart } from "../HourlyChart/HourlyChart.jsx";
+import styles from "./HomePage.module.scss";
 const API_KEY = "352776a7cec67a372aa5f5597af2eab5";
 
 export const HomePage = () => {
@@ -90,16 +91,12 @@ export const HomePage = () => {
     );
 
     if (!res.ok) {
-      toast.error("City not found", {
+      toast.error("За запитом нічого не знайдено", {
         transition: Slide,
       });
       return null;
-    } // else {
-    //   // toast.success("Added successfully");
-    // }
+    }
     return await res.json();
-    // if (!res.ok) throw new Error("City not found");
-    // return await res.json();
   };
 
   const getTimeZone = async (city) => {
@@ -141,13 +138,17 @@ export const HomePage = () => {
         prev.some((c) => c.name === data.name) ? prev : [...prev, data]
       );
     } catch {
-      alert("City not found");
+      toast.error("За запитом нічого не знайдено", {
+        transition: Slide,
+      });
     }
   };
 
   const handleOpenSeeMore = async (city) => {
     if (!isLoggedIn) {
-      toast.error("Вам потрібно зареєструватись");
+      toast.error("Вам потрібно зареєструватись", {
+        transition: Slide,
+      });
       return;
     }
     if (seeMoreData && seeMoreData.name === city.name) {
@@ -239,7 +240,7 @@ export const HomePage = () => {
   return (
     <>
       <Header setIsLoggedIn={setIsLoggedIn} isLoggedIn={isLoggedIn} />
-      <main>
+      <main data-aos="fade-up" className={styles.Main}>
         <Hero onSearch={addCity} />
         <FilterBar currentFilter={filterMode} onFilterChange={setFilterMode} />
         <section
@@ -266,9 +267,7 @@ export const HomePage = () => {
               />
             ))
           ) : (
-            <p style={{ color: "white", width: "100%", textAlign: "center" }}>
-              Список пуст
-            </p>
+            <p className={styles.Main_text}>Виберіть країну або місто</p>
           )}
         </section>
         {seeMoreData && (

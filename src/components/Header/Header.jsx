@@ -2,11 +2,12 @@ import { useState, useEffect } from "react";
 import { Container } from "../Container/Container";
 import { Slide, toast } from "react-toastify";
 import styles from "./Header.module.scss";
-import logo from "../../images/Svg/Logo.svg";
+import { ReactComponent as LogoIcon } from "../../images/Svg/Logo.svg";
 import user from "../../images/Svg/User.svg";
 import menuImg from "../../images/Svg/menuImg.svg";
 import SignUpModal from "../Modal/SignInModal";
 import LoginModal from "../Modal/LogInModal";
+import Profile from "../Profile/Profile";
 
 export const Header = ({ setIsLoggedIn, isLoggedIn }) => {
   const [openSignUp, setOpenSignUp] = useState(false);
@@ -34,12 +35,12 @@ export const Header = ({ setIsLoggedIn, isLoggedIn }) => {
   };
 
   const profileOpen = () => {
+    setOpenProfile((prev) => !prev);
+
     if (!isLoggedIn) {
       toast.error("Вам потрібно зареєструватись");
       return;
     }
-    toast.info("Поки це не доступно");
-    setOpenProfile((prev) => !prev);
   };
 
   const menuOpen = () => {
@@ -81,13 +82,11 @@ export const Header = ({ setIsLoggedIn, isLoggedIn }) => {
   }, []);
 
   return (
-    <section>
+    <section className={styles.HeaderSection}>
       <Container>
         <div className={styles.Header}>
           <div>
-            <a className={styles.Header_logo}>
-              <img src={logo} className={styles.Header_logoIcon} alt="logo" />
-            </a>
+            <LogoIcon className={styles.Header_logoIcon} />
           </div>
 
           <div>
@@ -118,18 +117,10 @@ export const Header = ({ setIsLoggedIn, isLoggedIn }) => {
                         >
                           Log out
                         </button>
-                        {/* add smth new */}
                       </div>
                     )}
                     <li className={styles.HeaderRlist_username}>
                       {userData.username}
-                    </li>
-                    <li>
-                      <img
-                        src={menuImg}
-                        alt="menuIcon"
-                        className={styles.HeaderRlist_icon}
-                      />
                     </li>
                   </ul>
                 ) : (
@@ -140,6 +131,13 @@ export const Header = ({ setIsLoggedIn, isLoggedIn }) => {
                     Sign Up
                   </button>
                 )}
+
+                <Profile
+                  open={openProfile}
+                  onClose={() => setOpenProfile(false)}
+                  setIsLoggedIn={setIsLoggedIn}
+                  user={userData}
+                />
 
                 <SignUpModal
                   open={openSignUp}
@@ -166,12 +164,6 @@ export const Header = ({ setIsLoggedIn, isLoggedIn }) => {
             </ul>
             <div className={styles.HeaderMobileMenu} onClick={menuOpen}>
               <div className={styles.HeaderMobileMenu_position}>
-                {/* <p className={styles.HeaderMobileMenu_text}>Menu</p>
-                <img
-                  src={menuImg}
-                  alt="MenuImg"
-                  className={styles.HeaderMobileMenu_icon}
-                /> */}
                 <label className={styles.menuButton}>
                   <input
                     type="checkbox"

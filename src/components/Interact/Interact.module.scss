@@ -1,24 +1,42 @@
 @import "../sass/utils/mixins.scss";
 
 .Interact {
+  --interact-text: rgba(0, 0, 0, 1);
+}
+
+:global([data-theme="dark"]) .Interact {
+  --interact-text: #ffffff;
+}
+
+.Interact {
   @media screen and (max-width: 1200px) {
     display: none;
   }
   margin: 80px 0;
   &_title {
     margin-bottom: 40px;
-    @include font(20px, 500, 24px, rgba(0, 0, 0, 1), "Montserrat");
+    @include font(20px, 500, 24px, var(--interact-text), "Montserrat");
   }
   &_button {
     width: 138px;
     height: 40px;
     @include flex-center;
+    gap: 10px;
+    padding: 10px 20px;
     border-radius: 10px;
+    border: none;
     background: rgba(255, 179, 108, 1);
-    transition: transform 0.3s, box-shadow 0.3s;
+    @include font(12px, 500, 15px, rgba(0, 0, 0, 1), "Montserrat Alternates");
+    transition: all 0.3s ease;
+    cursor: pointer;
+
     &:hover {
-      transform: translateY(-0.15em);
-      box-shadow: 0 0 0.3em 0em;
+      background-color: rgba(255, 140, 66, 1);
+      box-shadow: 0 0 15px rgba(255, 179, 108, 0.6);
+    }
+
+    &:active {
+      transform: scale(1.1);
     }
   }
 }
@@ -37,6 +55,6 @@
     border-radius: 10px;
   }
   &_text {
-    @include font(16px, 500, 20px, rgba(0, 0, 0, 1), "Montserrat");
+    @include font(16px, 500, 20px, var(--interact-text), "Montserrat");
   }
 }

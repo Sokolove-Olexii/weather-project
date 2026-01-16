@@ -1,15 +1,35 @@
 @import "../sass/utils/mixins.scss";
 
 .DailyForecast {
+  --dailyForecast-bg: rgba(232, 232, 232, 1);
+  --dailyForecast-text: rgba(0, 0, 0, 1);
+  --dailyForecast-cardBg: rgba(217, 217, 217, 1);
+  // --header-icon-filter: none;
+  // --menu-bg: rgba(230, 230, 230, 1);
+  // --menu-stroke: #000;
+}
+
+:global([data-theme="dark"]) .DailyForecast {
+  --dailyForecast-bg: #2e2e2e;
+  --dailyForecast-text: #ffffff;
+  --dailyForecast-cardBg: #1e1e1e;
+  // --header-icon-filter: invert(1);
+  // --header-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+  // --menu-bg: #2d2d2d;
+  // --menu-stroke: #fff;
+}
+
+.DailyForecast {
   padding: 26px 77px 42px;
   border-radius: 20px;
-  background: rgba(232, 232, 232, 1);
+  background-color: var(--dailyForecast-bg);
+  transition: all 0.3s ease;
   @media screen and (max-width: 768px) {
     padding: 20px 35px 35px;
   }
   &_title {
     margin-bottom: 20px;
-    @include font(16px, 600, 20px, rgba(0, 0, 0, 1), "Montserrat");
+    @include font(16px, 600, 20px, var(--dailyForecast-text), "Montserrat");
     @media screen and (max-width: 768px) {
       margin-bottom: 17px;
       @include font(12px, 600, 15px);
@@ -39,8 +59,8 @@
     grid-template-columns: 1fr auto 1fr;
     justify-content: row;
     border-radius: 10px;
-    background: rgba(217, 217, 217, 1);
-    transition: transform 0.3s, box-shadow 0.3s;
+    background: var(--dailyForecast-cardBg);
+    transition: all 0.3s ease;
     &:hover {
       transform: translateY(-0.15em);
       box-shadow: 0 0 0.2em 0em;
@@ -55,7 +75,7 @@
   }
   &_date {
     text-align: left;
-    @include font(16px, 500, 20px, rgba(0, 0, 0, 1), "Montserrat");
+    @include font(16px, 500, 20px, var(--dailyForecast-text), "Montserrat");
     @media screen and (max-width: 768px) {
       @include font(14px, 600, 17px);
     }
@@ -78,7 +98,7 @@
   }
   &_description {
     text-align: right;
-    @include font(16px, 500, 20px, rgba(0, 0, 0, 1), "Montserrat");
+    @include font(16px, 500, 20px, var(--dailyForecast-text), "Montserrat");
     @media screen and (max-width: 768px) {
       @include font(14px, 500, 17px);
     }
@@ -94,7 +114,7 @@
     @include flex($direction: column);
   }
   &_text {
-    @include font(16px, 500, 20px, rgba(0, 0, 0, 1), "Montserrat");
+    @include font(16px, 500, 20px, var(--dailyForecast-text), "Montserrat");
     @media screen and (max-width: 768px) {
       @include font(14px, 500, 17px);
     }

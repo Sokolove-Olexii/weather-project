@@ -1,0 +1,156 @@
+$transition: all 0.3s ease;
+$scale: 0.2;
+
+.Dialog {
+  --profile-bg: rgba(255, 255, 255, 1);
+  --profile-text: rgba(0, 0, 0, 1);
+  --profile-icon-filter: none;
+  --menu-bg: rgba(230, 230, 230, 1);
+  --menu-stroke: #000;
+
+  background-color: var(--profile-bg) !important;
+  color: var(--profile-text);
+  transition: all 0.3s ease;
+}
+
+:global([data-theme="dark"]) .Dialog {
+  --profile-bg: #1e1e1e;
+  --profile-text: #ffffff;
+  --profile-icon-filter: invert(1);
+  --profile-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+  --menu-bg: #2d2d2d;
+  --menu-stroke: #fff;
+}
+
+.Profile {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  &_logo {
+    width: 60px;
+    height: 60px;
+  }
+}
+
+.CloseBtn {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
+  a {
+    display: block;
+    width: 100px;
+    height: 100px;
+    background-color: #ffffff;
+    border-radius: 50px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-top: -50px;
+    margin-left: -50px;
+    transform: scale($scale);
+
+    box-shadow: 0px 0px 30px 0px rgba(247, 149, 29, 0.5);
+    transition: $transition;
+    opacity: 1;
+
+    .left,
+    .right {
+      background-color: #f5a700;
+      display: block;
+      height: 12px;
+      border-radius: 6px;
+      position: absolute;
+      transition: $transition;
+      top: 50%;
+      margin-top: -6px;
+      left: 18px;
+      width: 64px;
+      display: flex;
+      justify-content: space-between;
+
+      span {
+        display: block;
+        background-color: #ed7f00;
+        width: 12px;
+        height: 12px;
+        border-radius: 6px;
+        transition: $transition;
+        position: absolute;
+        left: 0;
+        top: 0;
+      }
+    }
+
+    .left {
+      transform: rotate(45deg);
+      transform-origin: center;
+
+      .circleLeft {
+        transition: $transition;
+        margin-left: 0;
+      }
+
+      .circleRight {
+        transition: $transition;
+        margin-left: 52px;
+      }
+    }
+
+    .right {
+      transform: rotate(-45deg);
+      transform-origin: center;
+
+      .circleLeft {
+        transition: $transition;
+        margin-left: 0;
+      }
+
+      .circleRight {
+        transition: $transition;
+        margin-left: 52px;
+      }
+    }
+
+    &:hover {
+      transform: scale($scale);
+
+      .left,
+      .right {
+        background-color: #2faee0;
+        transition: $transition;
+
+        span {
+          transition: $transition;
+          background-color: #008ac9;
+        }
+      }
+
+      .left {
+        .circleLeft {
+          transition: $transition;
+          margin-left: 52px;
+        }
+        .circleRight {
+          transition: $transition;
+          margin-left: 0;
+        }
+      }
+
+      .right {
+        .circleLeft {
+          transition: $transition;
+          margin-left: 52px;
+        }
+        .circleRight {
+          transition: $transition;
+          margin-left: 0;
+        }
+      }
+    }
+  }
+}

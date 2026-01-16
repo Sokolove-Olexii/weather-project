@@ -22,9 +22,6 @@ export const DailyForecast = ({ forecast }) => {
                   <span className={styles.DailyForecastList_date}>
                     {dateString}
                   </span>
-
-                  {/* <p className={styles.condition}>{day.weather[0].description}</p> */}
-
                   <div className={styles.DailyForecastListTemperature}>
                     <img
                       src={`http://openweathermap.org/img/wn/${day.weather[0].icon}.png`}

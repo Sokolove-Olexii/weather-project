@@ -3,14 +3,29 @@
 $trashColor1: #000000;
 $trashColor2: #333333;
 $trashColor3: #ffffff;
-$transition: all 0.2s ease-in-out;
+$transition: all 0.3s ease-in-out;
+
+.weatherCard {
+  --weatherCard-bg: rgba(232, 232, 232, 1);
+  --weatherCard-text: rgba(0, 0, 0, 1);
+  --weatherCard-stroke: #000;
+  --weatherCard-icon-filter: none;
+}
+
+:global([data-theme="dark"]) .weatherCard {
+  --weatherCard-bg: #2d2d2d;
+  --weatherCard-text: #ffffff;
+  --weatherCard-stroke: #fff;
+  --weatherCard-icon-filter: invert(1);
+}
 
 .weatherCard {
   max-width: 320px;
   max-height: 430px;
   padding: 15px 20px 21px;
   border-radius: 20px;
-  background: rgba(232, 232, 232, 1);
+  background-color: var(--weatherCard-bg);
+  transition: all 0.3s ease;
   @media screen and (max-width: 768px) {
     padding: 12px 17px 17px;
   }
@@ -21,7 +36,8 @@ $transition: all 0.2s ease-in-out;
   &_time {
     @include flex($justify: center);
     margin-bottom: 10px;
-    @include font(24px, 500, 29px, rgba(0, 0, 0, 1), "Montserrat");
+    @include font(24px, 500, 29px, var(--weatherCard-text), "Montserrat");
+    transition: all 0.3s ease;
     @media screen and (max-width: 768px) {
       margin-bottom: 8px;
       @include font(20px, 500, 24px);
@@ -55,7 +71,8 @@ $transition: all 0.2s ease-in-out;
   &_temp {
     @include flex($justify: center);
     margin-bottom: 39px;
-    @include font(32px, 500, 39px, rgba(0, 0, 0, 1), "Montserrat");
+    @include font(32px, 500, 39px, var(--weatherCard-text), "Montserrat");
+    transition: all 0.3s ease;
     @media screen and (max-width: 768px) {
       margin-bottom: 35px;
       @include font(24px, 500, 29px);
@@ -70,7 +87,7 @@ $transition: all 0.2s ease-in-out;
     width: 120px;
     height: 120px;
     margin-bottom: 15px;
-    transition: transform 0.4s ease;
+    transition: all 0.4s ease;
     &:hover {
       transform: scale(1.3);
     }
@@ -92,7 +109,7 @@ $transition: all 0.2s ease-in-out;
     margin-bottom: 25px;
   }
   &_text {
-    @include font(14px, 500, 17px, rgba(0, 0, 0, 1), "Montserrat");
+    @include font(14px, 500, 17px, var(--weatherCard-text), "Montserrat");
     @media screen and (max-width: 768px) {
       @include font(12px, 500, 15px);
     }
@@ -107,7 +124,7 @@ $transition: all 0.2s ease-in-out;
     margin-bottom: 27px;
   }
   &_date {
-    @include font(14px, 500, 17px, rgba(0, 0, 0, 1), "Montserrat");
+    @include font(14px, 500, 17px, var(--weatherCard-text), "Montserrat");
     @media screen and (max-width: 768px) {
       @include font(12px, 500, 15px);
     }
@@ -115,7 +132,7 @@ $transition: all 0.2s ease-in-out;
   &_line {
     width: 1px;
     height: 17px;
-    border: 1px solid rgba(0, 0, 0, 1);
+    border: 1px solid var(--weatherCard-text);
   }
 }
 
@@ -126,6 +143,7 @@ $transition: all 0.2s ease-in-out;
     width: 30px;
     height: 30px;
     margin-right: 16px;
+    filter: var(--weatherCard-icon-filter);
     transition: transform 0.4s ease;
     user-select: none;
     &:hover {
@@ -143,7 +161,7 @@ $transition: all 0.2s ease-in-out;
     margin-right: 38px;
     user-select: none;
     fill: transparent;
-    stroke: #000000;
+    stroke: var(--weatherCard-stroke);
     stroke-width: 2px;
     transition: transform 0.4s ease, fill 0.3s ease, stroke 0.3s ease;
     &:hover {

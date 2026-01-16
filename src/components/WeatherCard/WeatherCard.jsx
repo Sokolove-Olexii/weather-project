@@ -1,6 +1,7 @@
 import { useState } from "react";
 import styles from "./WeatherCard.module.scss";
-import refreshImg from "../../images/Svg/refreshImg.svg";
+import refreshImg from "../../images/Svg/refresh.svg";
+import { ReactComponent as RefreshImg } from "../../images/Svg/refresh.svg";
 
 export const WeatherCard = ({
   data,
@@ -64,8 +65,7 @@ export const WeatherCard = ({
       </div>
 
       <div className={styles.weatherBtnDiv}>
-        <img
-          src={refreshImg}
+        <RefreshImg
           alt="Refresh"
           className={`${styles.weatherBtnDiv_refresh} ${
             spin ? styles.spin : ""

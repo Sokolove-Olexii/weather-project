@@ -1,0 +1,20 @@
+.Main {
+  --main-bg: rgba(255, 255, 255, 1);
+  --main-text: rgba(0, 0, 0, 1);
+  background-color: var(--main-bg);
+}
+
+:global([data-theme="dark"]) .Main {
+  --main-bg: #1e1e1e;
+  --main-text: #ffffff;
+}
+
+.Main {
+  transition: all 0.3s ease;
+  &_text {
+    color: var(--main-text);
+    width: 100%;
+    text-align: center;
+    transition: all 0.3s ease;
+  }
+}

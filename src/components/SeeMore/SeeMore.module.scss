@@ -1,9 +1,27 @@
 @import "../sass/utils/mixins.scss";
 
 .SeeMore {
+  --SeeMore-bg-cards: rgba(217, 217, 217, 1);
+  --SeeMore-text: rgba(0, 0, 0, 1);
+  --SeeMore-icon-filter: none;
+  --SeeMore-bg: rgba(232, 232, 232, 1);
+  --SeeMore-stroke: #000;
+}
+
+:global([data-theme="dark"]) .SeeMore {
+  --SeeMore-bg-cards: #1e1e1e;
+  --SeeMore-text: #ffffff;
+  --SeeMore-icon-filter: invert(1);
+  --SeeMore-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+  --SeeMore-bg: #2d2d2d;
+  --SeeMore-stroke: #fff;
+}
+
+.SeeMore {
   padding: 40px 77px;
   border-radius: 20px;
-  background: rgba(232, 232, 232, 1);
+  background-color: var(--SeeMore-bg);
+  transition: all 0.3s ease;
   @media screen and (max-width: 768px) {
     padding: 30px;
   }
@@ -27,7 +45,7 @@
     @include flex($justify: center, $align: center, $direction: column);
     padding: 20px 0;
     border-radius: 10px;
-    background: rgba(217, 217, 217, 1);
+    background: var(--SeeMore-bg-cards);
     transition: transform 0.3s, box-shadow 0.3s;
     &:hover {
       transform: translateY(-0.15em);
@@ -42,7 +60,7 @@
   }
   &_text {
     margin-bottom: 10px;
-    @include font(16px, 500, 20px, rgba(0, 0, 0, 1), "Montserrat");
+    @include font(16px, 500, 20px, var(--SeeMore-text), "Montserrat");
     @media screen and (max-width: 768px) {
       margin-bottom: 8px;
       @include font(12px, 500, 15px);
@@ -53,7 +71,7 @@
   }
   &_data {
     margin-bottom: 23px;
-    @include font(32px, 500, 39px, rgba(0, 0, 0, 1), "Montserrat");
+    @include font(32px, 500, 39px, var(--SeeMore-text), "Montserrat");
     @media screen and (max-width: 768px) {
       margin-bottom: 37px;
       @include font(16px, 500, 20px);

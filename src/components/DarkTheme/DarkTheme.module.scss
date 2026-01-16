@@ -1,0 +1,104 @@
+@import "https://unpkg.com/open-props/easings.min.css";
+
+:root {
+  --icon-fill: currentColor;
+  --icon-fill-hover: currentColor;
+}
+
+.themeToggle {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  color: inherit;
+
+  &:is(:hover, :focus-visible) > .sunAndMoon > :is(.moon, .sun) {
+    fill: var(--icon-fill-hover);
+  }
+
+  &:is(:hover, :focus-visible) .sunAndMoon > .sunBeams {
+    stroke: var(--icon-fill-hover);
+  }
+}
+
+.sunAndMoon {
+  & > :is(.moon, .sun, .sunBeams) {
+    transform-origin: center;
+  }
+
+  & > :is(.moon, .sun) {
+    fill: var(--icon-fill);
+  }
+
+  & > .sunBeams {
+    stroke: var(--icon-fill);
+    stroke-width: 2px;
+  }
+}
+
+:global([data-theme="dark"]) {
+  .sunAndMoon {
+    & > .sun {
+      transform: scale(1.75);
+    }
+
+    & > .sunBeams {
+      opacity: 0;
+    }
+
+    & > .moon > circle {
+      transform: translateX(-7px);
+    }
+  }
+}
+
+@supports (cx: 1) {
+  :global([data-theme="dark"]) .sunAndMoon > .moon > circle {
+    cx: 17;
+    transform: translateX(0);
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .sunAndMoon {
+    & > .sun {
+      transition: transform 0.5s var(--ease-elastic-3);
+    }
+
+    & > .sunBeams {
+      transition: transform 0.5s var(--ease-elastic-4),
+        opacity 0.5s var(--ease-3);
+    }
+
+    .moon > circle {
+      transition: transform 0.25s var(--ease-out-5);
+    }
+  }
+
+  @supports (cx: 1) {
+    .sunAndMoon .moon > circle {
+      transition: cx 0.25s var(--ease-out-5);
+    }
+  }
+
+  :global([data-theme="dark"]) .sunAndMoon {
+    & > .sun {
+      transition-timing-function: var(--ease-3);
+      transition-duration: 0.25s;
+      transform: scale(1.75);
+    }
+
+    & > .sunBeams {
+      transition-duration: 0.15s;
+      transform: rotateZ(-25deg);
+    }
+
+    & > .moon > circle {
+      transition-duration: 0.5s;
+      transition-delay: 0.25s;
+    }
+  }
+}

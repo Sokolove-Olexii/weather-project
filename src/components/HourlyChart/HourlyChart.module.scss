@@ -1,10 +1,24 @@
 @import "../sass/utils/mixins.scss";
 
 .HourlyChart {
+  --HourlyChart-bg: rgba(232, 232, 232, 1);
+  --HourlyChart-text: rgba(0, 0, 0, 1);
+  --HourlyChart-cardBg: rgba(217, 217, 217, 1);
+  --HourlyChart-grid: #d2d2d2;
+}
+
+:global([data-theme="dark"]) .HourlyChart {
+  --HourlyChart-bg: #2e2e2e;
+  --HourlyChart-text: #ffffff;
+  --HourlyChart-grid: #444444;
+  --HourlyChart-cardBg: #1e1e1e;
+}
+
+.HourlyChart {
   padding: 26px 40px;
   margin-bottom: 30px;
   border-radius: 20px;
-  background: rgba(232, 232, 232, 1);
+  background: var(--HourlyChart-bg);
   @media screen and (max-width: 768px) {
     padding: 20px 35px;
   }
@@ -12,7 +26,7 @@
     padding: 18px 25px;
   }
   &_title {
-    @include font(16px, 600, 20px, rgba(0, 0, 0, 1), "Montserrat");
+    @include font(16px, 600, 20px, var(--HourlyChart-text), "Montserrat");
     @media screen and (max-width: 768px) {
       @include font(12px, 600, 15px);
     }

@@ -1,0 +1,27 @@
+.ModalPaper {
+  --modal-bg: #ffffff;
+  --modal-text: #000000;
+  --input-bg: rgba(228, 228, 228, 1);
+  --input-text: rgba(0, 0, 0, 1);
+  --input-placeholder: rgba(171, 171, 171, 1);
+  --btn-bg: rgba(255, 179, 108, 1);
+  --btn-hover: rgba(255, 140, 66, 1);
+  --btn-text: #000000;
+  background-color: var(--modal-bg) !important;
+  color: var(--modal-text) !important;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+:global([data-theme="dark"]) .ModalPaper {
+  --modal-bg: #1e1e1e;
+  --modal-text: #ffffff;
+  --input-bg: #2d2d2d;
+  --input-text: #ffffff;
+  --input-placeholder: #888888;
+}
+
+.SignInModal {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}

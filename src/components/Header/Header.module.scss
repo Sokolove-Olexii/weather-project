@@ -1,16 +1,37 @@
 @import "../sass/utils/mixins.scss";
 
+.HeaderSection {
+  --header-bg: rgba(255, 255, 255, 1);
+  --header-text: rgba(0, 0, 0, 1);
+  --header-icon-filter: none;
+  --menu-bg: rgba(230, 230, 230, 1);
+  --menu-stroke: #000;
+
+  background-color: var(--header-bg);
+  transition: background-color 0.3s ease;
+  position: relative;
+  z-index: 100;
+}
+
+:global([data-theme="dark"]) .HeaderSection {
+  --header-bg: #1e1e1e;
+  --header-text: #ffffff;
+  --header-icon-filter: invert(1);
+  --header-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+  --menu-bg: #2d2d2d;
+  --menu-stroke: #fff;
+}
+
 .Header {
   @include flex(space-between, center);
-  position: relative;
-  background-color: rgba(255, 255, 255, 1);
-  z-index: 100;
 
   &_logoIcon {
     width: 82px;
     height: 56px;
     user-select: none;
     cursor: pointer;
+    transition: all 0.3s ease;
+    filter: var(--header-icon-filter);
   }
 }
 
@@ -24,8 +45,8 @@
 
   &_li {
     cursor: pointer;
-    transition: 0.2s;
-    @include font(12px, 500, 15px, rgba(0, 0, 0, 1));
+    transition: all 0.3s ease;
+    @include font(12px, 500, 15px, var(--header-text));
 
     &:hover {
       transform: scale(1.05);
@@ -68,7 +89,7 @@
 
     background: rgba(255, 179, 108, 1);
     cursor: pointer;
-    transition: transform 0.3s, box-shadow 0.3s, background-color 0.3s;
+    transition: all 0.3s ease;
 
     &:hover {
       background-color: rgba(255, 140, 66, 1);
@@ -81,10 +102,12 @@
   }
 
   &_username {
-    @include font(12px, 500, 15px, rgba(0, 0, 0, 1), "Montserrat Alternates");
+    @include font(12px, 500, 15px, var(--header-text), "Montserrat Alternates");
+    transition: all 0.3s ease;
   }
 
   &_icon {
+    fill: var(--header-icon-filter);
     width: 10px;
     height: 10px;
   }
@@ -103,8 +126,8 @@
     border: none;
     background: rgba(255, 179, 108, 1);
     @include font(12px, 500, 15px, rgba(0, 0, 0, 1), "Montserrat Alternates");
+    transition: all 0.3s ease;
     cursor: pointer;
-    transition: transform 0.3s, box-shadow 0.3s, background-color 0.3s;
 
     &:hover {
       background-color: rgba(255, 140, 66, 1);
@@ -126,7 +149,6 @@
   position: static;
   @include flex-center;
   gap: 5px;
-
   user-select: none;
 
   @media screen and (min-width: 768px) {
@@ -144,7 +166,7 @@
   }
 
   &_text {
-    @include font(10px, 500, 12px, rgba(0, 0, 0, 1));
+    @include font(10px, 500, 12px, var(--header-text));
   }
 
   &_icon {
@@ -163,7 +185,7 @@
   width: 100vw;
   max-width: 100%;
   padding: 30px 50px;
-  background: rgba(230, 230, 230, 1);
+  background: var(--menu-bg);
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
   opacity: 0;
   pointer-events: none;
@@ -206,7 +228,7 @@
 
   .line {
     fill: none;
-    stroke: #000;
+    stroke: var(--menu-stroke);
     stroke-width: 6;
     stroke-linecap: round;
     stroke-linejoin: round;
